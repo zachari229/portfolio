@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zachari GANDEKON</title>
+    <meta name="description"
+        content="Zachari GANDEKON - Développeur Full Stack & Designer UI/UX. Création d'expériences web modernes et performantes.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==============================
+           RESET & BASE
+           ============================== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #1e293b;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --container: 1200px;
+            --container-sm: 800px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text: #f1f5f9;
+                --text-light: #94a3b8;
+                --bg: #0f172a;
+                --bg-alt: #1e293b;
+                --border: #334155;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* ==============================
+           UTILITIES
+           ============================== */
+        .container {
+            width: min(100% - 2rem, var(--container));
+            margin-inline: auto;
+        }
+
+        .container-sm {
+            width: min(100% - 2rem, var(--container-sm));
+            margin-inline: auto;
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .bg-primary {
+            background: var(--primary);
+        }
+
+        .bg-alt {
+            background: var(--bg-alt);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-6 {
+            gap: 1.5rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .md\\:grid-cols-2 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .p-4 {
+            padding: 1rem;
+        }
+
+        .p-6 {
+            padding: 1.5rem;
+        }
+
+        .px-4 {
+            padding-inline: 1rem;
+        }
+
+        .py-8 {
+            padding-block: 2rem;
+        }
+
+        .py-12 {
+            padding-block: 3rem;
+        }
+
+        .py-16 {
+            padding-block: 4rem;
+        }
+
+        .my-8 {
+            margin-block: 2rem;
+        }
+
+        .rounded {
+            border-radius: var(--radius-sm);
+        }
+
+        .rounded-lg {
+            border-radius: var(--radius);
+        }
+
+        .shadow {
+            box-shadow: var(--shadow);
+        }
+
+        .shadow-lg {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .transition {
+            transition: var(--transition);
+        }
+
+        /* ==============================
+           TYPOGRAPHY
+           ============================== */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 5vw, 1.75rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.875rem, 5vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* ==============================
+           NAVIGATION
+           ============================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark .navbar {
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        .nav-container {
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            background: var(--bg-alt);
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            z-index: 1001;
+        }
+
+        .menu-icon {
+            display: block;
+        }
+
+        .close-icon {
+            display: none;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .mobile-link {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+            padding: 1rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .mobile-link:hover {
+            color: var(--primary);
+            background: var(--bg-alt);
+        }
+
+        /* ==============================
+           HERO SECTION
+           ============================== */
+        .hero-section {
+            padding-block: 6rem 4rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            order: 2;
+        }
+
+        .hero-image {
+            order: 1;
+        }
+
+        .image-wrapper {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), transparent);
+            z-index: 1;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* ==============================
+           BUTTONS
+           ============================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* ==============================
+           CARDS
+           ============================== */
+        .cards-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .card {
+            background: var(--bg-alt);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            color: var(--primary);
+            width: 48px;
+            height: 48px;
+            padding: 0.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-sm);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        /* ==============================
+           SKILLS
+           ============================== */
+        .skills-section {
+            background: var(--bg-alt);
+            padding-block: 6rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .skill-name {
+            color: var(--text);
+        }
+
+        .skill-level {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: var(--bg-alt);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            width: 0;
+            border-radius: 6px;
+            transition: width 1.2s ease-out;
+        }
+
+        /* ==============================
+           PROJECTS
+           ============================== */
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .project-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.375rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* ==============================
+           CONTACT
+           ============================== */
+        .contact-section {
+            padding-block: 6rem;
+            text-align: center;
+        }
+
+        .contact-description {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* ==============================
+           FOOTER
+           ============================== */
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            background: var(--bg-alt);
+        }
+
+        /* ==============================
+           RESPONSIVE
+           ============================== */
+        @media (min-width: 640px) {
+            .md\\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .hero-content {
+                order: 1;
+            }
+
+            .hero-image {
+                order: 2;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-section {
+                padding-block: 8rem 6rem;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .navbar {
+                border-bottom-color: var(--border);
+            }
+
+            .card,
+            .skill-item,
+            .project-card {
+                background: var(--bg-alt);
+                border-color: var(--border);
+            }
+        }
+
+        /* Animation on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==============================
+       MISE À JOUR : PHOTO CIRCULAIRE + FOND BLEU CIEL
+       ============================== */
+
+        /* Fond bleu ciel pour la section hero */
+        .hero-section {
+            padding-block: 6rem 4rem;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .hero-section {
+                background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0284c7 100%);
+            }
+        }
+
+        /* Effet de particules subtiles en arrière-plan (optionnel mais classe) */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Image wrapper circulaire avec glow */
+        .image-wrapper {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow:
+                0 0 0 8px rgba(99, 102, 241, 0.2),
+                0 0 0 16px rgba(14, 165, 233, 0.15),
+                0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .image-wrapper:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow:
+                0 0 0 10px rgba(99, 102, 241, 0.3),
+                0 0 0 20px rgba(14, 165, 233, 0.25),
+                0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Responsive pour mobile */
+        @media (max-width: 768px) {
+            .image-wrapper {
+                width: 260px;
+                height: 260px;
+            }
+        }
+
+        /* Assure que le contenu reste au-dessus du fond */
+        .hero-content,
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo" onclick="scrollToSection('hero')">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-links">
+                    <button onclick="scrollToSection('about')" class="nav-link">À propos</button>
+                    <button onclick="scrollToSection('skills')" class="nav-link">Compétences</button>
+                    <button onclick="scrollToSection('projects')" class="nav-link">Projets</button>
+                    <button onclick="scrollToSection('contact')" class="nav-link">Contact</button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <button onclick="scrollToSection('about')" class="mobile-link">À propos</button>
+                <button onclick="scrollToSection('skills')" class="mobile-link">Compétences</button>
+                <button onclick="scrollToSection('projects')" class="mobile-link">Projets</button>
+                <button onclick="scrollToSection('contact')" class="mobile-link">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content animate-on-scroll">
+                    <h1 class="hero-title">
+                        Salut!!!, je suis <span class="text-primary">Zachari GANDEKON</span>
+                    </h1>
+                    <h2 class="hero-subtitle">
+                        Développeur Full Stack,développeur WordPress; Passionné par la cybersécurité.
+                    </h2>
+                    <p class="hero-description">
+                        Je crée des expériences web modernes, performantes et intuitives qui résolvent de vrais
+                        problèmes.
+                        Passionné par le code propre, le design centré utilisateur et les technologies modernes.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="scrollToSection('projects')">
+                            Voir mes projets
+                        </button>
+                        <button class="btn btn-outline" onclick="scrollToSection('contact')">
+                            Me contacter
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image animate-on-scroll">
+                    <div class="image-wrapper">
+                        <img src="Image/photo.profil.jpeg " alt="Espace de travail professionnel">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">À propos de moi</h2>
+            <div class="cards-grid">
+                <div class="card animate-on-scroll">
+                    <div class="card-header">
+                        <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        <h3 class="card-title">Design d'abord</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">
+                            Un excellent développement commence par un excellent design. L'expérience utilisateur est au
+                            cœur de tout ce que je construis.
+                        </p>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-header">
+                        <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 3h14v18H5z"></path> <!-- bloc/rectangle -->
+                            <path d="M12 8v8"></path> <!-- mouvement vertical -->
+                            <circle cx="12" cy="12" r="2"></circle> <!-- point central -->
+                            <!-- Main simplifiée pour drag -->
+                            <path d="M15 5c0-1.1-.9-2-2-2s-2 .9-2 2v4c0 1.1.9 2 2 2s2-.9 2-2V5z"></path>
+                            <path d="M18 7c0-1.1-.9-2-2-2s-2 .9-2 2v2c0 1.1.9 2 2 2s2-.9 2-2V7z"></path>
+                            <path d="M9 7c0-1.1-.9-2-2-2s-2 .9-2 2v2c0 1.1.9 2 2 2s2-.9 2-2V7z"></path>
+                        </svg>
+                        <h3 class="card-title">No Code </h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">
+                            Créez et personnalisez des sites WordPress professionnels sans écrire une seule ligne de
+                            code.
+                        </p>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-header">
+                        <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        <h3 class="card-title">Code propre</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">
+                            Écrire du code maintenable et évolutif est ma priorité. Je respecte les standards modernes
+                            et les meilleures pratiques.
+                        </p>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-header">
+                        <!-- Icône SEO : Loupe + Engrenage (optimisation de la recherche) -->
+                        <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            <circle cx="18" cy="6" r="3"></circle> <!-- petit engrenage centré sur la loupe -->
+                            <path d="M16.5 4.5l1 1m-1 1l1 1m-3-1l1-1m1 1l1-1"></path>
+                            <!-- dents d'engrenage simplifiées -->
+                        </svg>
+                        <h3 class="card-title">Optimisation SEO</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">
+                            Optimiser le référencement naturel (SEO) est essentiel pour améliorer la visibilité d'un
+                            site web. Je m'assure que chaque page est bien structurée, avec des balises meta optimisées,
+                            un contenu de qualité, une vitesse de chargement rapide et une compatibilité mobile parfaite
+                            pour les moteurs de recherche.
+                        </p>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-header">
+                        <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <h3 class="card-title">Livraison rapide</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">
+                            J'accorde de l'importance à l'efficacité et livre des résultats de haute qualité dans les
+                            délais, sans compromis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container-sm">
+            <h2 class="section-title animate-on-scroll">Compétences & Expertise</h2>
+            <div class="skills-list">
+                <div class="skill-item animate-on-scroll">
+                    <div class="skill-header">
+                        <span class="skill-name">WordPress(Elementor, WooCommerce, Divi...)</span>
+                        <span class="skill-level">99%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <div class="skill-header">
+                        <span class="skill-name">HTML</span>
+                        <span class="skill-level">99%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <div class="skill-header">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-level">90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <div class="skill-header">
+                        <span class="skill-name">CSS</span>
+                        <span class="skill-level">95%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <div class="skill-header">
+                        <span class="skill-name">Python</span>
+                        <span class="skill-level">90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <div class="skill-header">
+                        <span class="skill-name">Django</span>
+                        <span class="skill-level">80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <div class="skill-header">
+                        <span class="skill-name">Php</span>
+                        <span class="skill-level">20%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Projets en vedette</h2>
+            <div class="projects-grid">
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <img src="https://hubspot.contentools.com/api/v1/media/254271/download/"
+                            alt="Plateforme E-Commerce">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Plateforme E-Commerce</h3>
+                        <p class="project-description">
+                            Solution e-commerce moderne avec gestion d'inventaire en temps réel et paiement fluide.
+                        </p>
+
+                        <a href="#" class="project-link">
+                            Voir le projet
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <img src="Image/càaching00.06.01.jpeg" alt="EduConnect - Plateforme de coaching en ligne">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">EduConnect - Plateforme de coaching en ligne</h3>
+                        <p class="project-description">
+                            Plateforme de coaching en ligne connectant les étudiants avec des mentors experts dans
+                            divers domaines. La plateforme offre des fonctionnalités de réservation et de prise de
+                            rendez-vous.
+                        </p>
+
+                        <a href="#" class="project-link">
+                            Voir le projet
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <img src="Image/remacceuil.jpeg" alt="RemDigit">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">RemDigit </h3>
+                        <p class="project-description">
+                            RemDigit est une platforme personnelle pour vendre mes services digitals
+                        </p>
+
+                        <a href="#" class="project-link">
+                            Voir le projet
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Autres projets similaires -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container-sm">
+            <h2 class="section-title animate-on-scroll">Travaillons ensemble</h2>
+            <p class="contact-description">
+                Je suis toujours ouvert à discuter de nouveaux projets, idées créatives ou opportunités de
+                collaboration.
+            </p>
+
+            <div class="contact-buttons">
+                <a href="https://wa.me/message/HHJ4NHJUMYJQB1" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline btn-large">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    WhatsApp
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61586409767436" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-outline btn-large facebook-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                    Facebook
+                </a>
+                <a href="contactremdigit@gmail.com" class="btn btn-outline btn-large">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    M'envoyer un email
+                </a>
+                <a href="https://github.com/zachari229" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline btn-large">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/zachari-gandekon-4a3361376?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-large">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    LinkedIn
+
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2026  RemDigit. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.querySelector('.menu-icon');
+            const closeIcon = document.querySelector('.close-icon');
+
+            mobileMenu.classList.toggle('active');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        // Smooth scroll
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                if (mobileMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            }
+        }
+
+        // Progress bars animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-fill');
+                    fills.forEach((fill, i) => {
+                        setTimeout(() => {
+                            const width = fill.parentElement.previousElementSibling.querySelector('.skill-level').textContent;
+                            fill.style.width = width;
+                        }, i * 100);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.skill-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Animate on scroll
+        const animateObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            animateObserver.observe(el);
+        });
+    </script>
+</body>
+
+</html>
