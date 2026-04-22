@@ -208,7 +208,7 @@ h1, h2, h3, h4 {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 1.5rem;
+    padding: 0.8rem 1.5rem;
 }
 
 .logo {
@@ -230,12 +230,12 @@ h1, h2, h3, h4 {
     color: #fff;
 }
 
-/* ── Icône hidden (pour le toggle hamburger / croix) ── */
+/* ── Cache l'icône croix par défaut ── */
 .hidden {
     display: none !important;
 }
 
-/* ── Bouton hamburger : caché par défaut sur desktop ── */
+/* ── Bouton hamburger : caché sur desktop ── */
 .mobile-menu-btn {
     display: none;
     align-items: center;
@@ -244,11 +244,13 @@ h1, h2, h3, h4 {
     border: none;
     cursor: pointer;
     color: white;
-    z-index: 1002;
     padding: 8px;
+    /* Toujours au-dessus du menu overlay */
+    position: relative;
+    z-index: 10001;
 }
 
-/* ── Nav links : visibles sur desktop ── */
+/* ── Nav links desktop ── */
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -289,57 +291,78 @@ h1, h2, h3, h4 {
    ============================== */
 @media (max-width: 768px) {
 
-    /* Afficher le bouton hamburger */
+    /* Bouton hamburger visible et fixé en haut à droite */
     .mobile-menu-btn {
         display: flex !important;
+        position: fixed;
+        top: 12px;
+        right: 16px;
+        z-index: 10001;
     }
 
-    /* Cacher le menu par défaut */
+    /* Menu mobile : plein écran, caché par défaut */
     #mobileMenu {
         display: none;
         flex-direction: column;
         position: fixed;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
+        width: 100vw;
+        height: 100vh;
         background: #0f0f0f;
-        padding: 100px 40px 40px;
-        z-index: 1001;
+        /* padding-top grand pour descendre les liens sous la navbar */
+        padding-top: 80px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 40px;
+        z-index: 10000;
         align-items: center;
-        justify-content: center;
-        gap: 8px;
+        /* flex-start : les liens commencent en haut, pas coupés */
+        justify-content: flex-start;
+        gap: 0;
+        overflow-y: auto;
     }
 
-    /* Afficher le menu quand actif */
+    /* Menu ouvert */
     #mobileMenu.active {
         display: flex !important;
     }
 
-    /* Liens dans le menu mobile */
+    /* Chaque lien prend toute la largeur */
     #mobileMenu .nav-link {
-        font-size: 1.4rem;
-        padding: 16px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        display: block !important;
         width: 100%;
         text-align: center;
-        color: white;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #fff !important;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         text-decoration: none;
+        transition: color 0.2s, background 0.2s;
     }
 
     #mobileMenu .nav-link:hover {
-        color: #3787dd;
-        background: none;
+        color: #6366f1 !important;
+        background: rgba(99, 102, 241, 0.08);
     }
 
-    /* Sélecteur de langue dans le menu mobile */
+    /* Sélecteur de langue */
     #mobileMenu select {
-        margin-top: 24px;
+        margin-top: 28px;
         color: white;
         background: #1a1a1a;
-        border: 1px solid rgba(255,255,255,0.2);
-        padding: 10px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
         border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    /* Image wrapper réduite */
+    .image-wrapper {
+        width: 220px;
+        height: 220px;
     }
 }
 
@@ -347,10 +370,12 @@ h1, h2, h3, h4 {
    DESKTOP — min 769px
    ============================== */
 @media (min-width: 769px) {
+
     .mobile-menu-btn {
         display: none !important;
     }
 
+    /* Sur desktop, #mobileMenu se comporte comme .nav-links */
     .nav-links,
     #mobileMenu {
         display: flex !important;
@@ -358,9 +383,12 @@ h1, h2, h3, h4 {
         flex-direction: row;
         background: none;
         padding: 0;
+        width: auto;
+        height: auto;
         gap: 2rem;
         align-items: center;
         justify-content: flex-end;
+        overflow: visible;
     }
 
     .hero-content { order: 1; }
@@ -450,10 +478,6 @@ h1, h2, h3, h4 {
 
 .image-wrapper:hover img {
     transform: scale(1.08);
-}
-
-@media (max-width: 768px) {
-    .image-wrapper { width: 260px; height: 260px; }
 }
 
 .hero-content,
