@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Zachari GANDEKON</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+    <!-- Header chargé dynamiquement -->
+    <div id="header-placeholder"></div>
+
+    <!-- En-tête Contact -->
+    <header class="contact-header">
+        <div class="contact-title" data-i18n="nav_contact">Contact</div>
+        <h1 data-i18n="contact_hero_title">Contacter <span>moi</span></h1>
+        <p data-i18n="contact_hero_desc">
+            Je suis toujours ouvert à discuter de nouveaux projets, idées créatives ou opportunités de collaboration.
+        </p>
+    </header>
+
+    <!-- Section Contact -->
+    <section class="contact-section py-16">
+        <div class="container">
+            <div class="contact-container">
+
+                <!-- Coordonnées -->
+                <div class="contact-info">
+                    <h1 data-i18n="contact_info_title">Mes coordonnées</h1>
+                    <p data-i18n="contact_info_desc">Je suis disponible pour répondre à vos besoins et vous accompagner dans vos projets.</p>
+
+                    <div class="info-box">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h3 data-i18n="contact_address_label">Adresse</h3>
+                            <p>Parakou - Bénin</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h3 data-i18n="contact_phone_label">Téléphone</h3>
+                            <p>+229 01 59 53 55 45</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h3 data-i18n="contact_email_label">Email</h3>
+                            <p>zachari363@email.com</p>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <a href="mailto:zachari363@email.com" class="btn email-btn">
+                            <i class="fa-solid fa-envelope"></i> Email
+                        </a>
+                        <a href="https://wa.me/2290159535545" target="_blank" class="btn whatsapp-btn">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Formulaire -->
+                <div class="contact-form">
+                    <h1 data-i18n="contact_form_title">Envoyer un message</h1>
+                    <p data-i18n="contact_form_desc">Remplissez le formulaire ci-dessous.</p>
+
+                    <form id="contactForm">
+                        <div class="row">
+                            <input type="text" id="input_name" data-i18n-placeholder="contact_name" placeholder="Votre nom" required>
+                            <input type="email" id="input_email" data-i18n-placeholder="contact_email" placeholder="Votre email" required>
+                        </div>
+                        <div class="row">
+                            <input type="text" id="input_subject" data-i18n-placeholder="contact_subject" placeholder="Objet" required>
+                            <input type="tel" id="input_phone" data-i18n-placeholder="contact_phone" placeholder="Votre numéro">
+                        </div>
+                        <textarea id="input_message" data-i18n-placeholder="contact_message" placeholder="Votre message" rows="6" required></textarea>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="send" data-i18n="contact_send">Envoyer</button>
+                            <button type="button" class="back" onclick="history.back()" data-i18n="contact_back">Retour</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer chargé dynamiquement -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ✅ Ordre correct : translations.js puis main.js -->
+    <script src="/portfolio/js/translations.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/contact.js" defer></script>
+
+</body>
+</html>

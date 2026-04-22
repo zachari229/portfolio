@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Zachari GANDEKON</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/portfolio.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+    <!-- Header chargé dynamiquement -->
+    <div id="header-placeholder"></div>
+
+    <header class="section-header">
+        <div class="section-label" data-i18n="nav_portfolio">Mes réalisations</div>
+        <h1 class="section-title" data-i18n="portfolio_title">Portfolio</h1>
+        <p class="section-sub" data-i18n="portfolio_sub">Découvrez quelques-uns de mes projets.</p>
+    </header>
+
+    <div class="portfolio-grid" id="grid"></div>
+
+    <!-- Footer chargé dynamiquement -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 1. Traductions en premier -->
+    <script src="../js/translations.js"></script>
+
+    <!-- 2. Main (charge header/footer + appelle initTranslations après injection) -->
+    <script src="../js/main.js"></script>
+
+    <!-- 3. Logique portfolio -->
+    <script src="../js/portfolio.js"></script>
+
+    <script>
+        // Données des projets dans les 3 langues
+        const projectsData = {
+            fr: [
+                {
+                    title: "Flighthotelcargo",
+                    desc: "Une agence de voyage et de logistique internationale humaine, réactive et disponible 6j/7 pour vous accompagner à chaque étape.",
+                    url: "https://flighthotelcargo.com/",
+                    tag: "Web agency",
+                    screenshot: "/portfolio/Image/projet1.PNG"
+                },
+                {
+                    title: "RemDigit",
+                    desc: "Un site vitrine pour une agence de communication digitale.",
+                    url: "https://remdigit.netlify.app/",
+                    tag: "Vitrine",
+                    screenshot: "/portfolio/Image/remdigit.PNG"
+                },
+                {
+                    title: "EduConect",
+                    desc: "Une plateforme de formation et de coaching en ligne.",
+                    url: "https://educonect.netlify.app/",
+                    tag: "En cours",
+                    screenshot: "/portfolio/Image/càaching00.06.01.jpeg"
+                },
+                {
+                    title: "God Remembers",
+                    desc: "Une plateforme culinaire et gastronomique.",
+                    url: "https://godremembers.netlify.app/",
+                    tag: "En cours",
+                    screenshot: "/portfolio/Image/restauto (1).jpeg"
+                }
+            ],
+            en: [
+                {
+                    title: "Flighthotelcargo",
+                    desc: "A human, responsive travel and international logistics agency, available 6 days a week to support you at every step.",
+                    url: "https://flighthotelcargo.com/",
+                    tag: "Web agency",
+                    screenshot: "/portfolio/Image/projet1.PNG"
+                },
+                {
+                    title: "RemDigit",
+                    desc: "A showcase website for a digital communication agency.",
+                    url: "https://remdigit.netlify.app/",
+                    tag: "Showcase",
+                    screenshot: "/portfolio/Image/remdigit.PNG"
+                },
+                {
+                    title: "EduConect",
+                    desc: "An online training and coaching platform.",
+                    url: "https://educonect.netlify.app/",
+                    tag: "In progress",
+                    screenshot: "/portfolio/Image/càaching00.06.01.jpeg"
+                },
+                {
+                    title: "God Remembers",
+                    desc: "A culinary and gastronomic platform.",
+                    url: "https://godremembers.netlify.app/",
+                    tag: "In progress",
+                    screenshot: "/portfolio/Image/restauto (1).jpeg"
+                }
+            ],
+            es: [
+                {
+                    title: "Flighthotelcargo",
+                    desc: "Una agencia de viajes y logística internacional humana, reactiva y disponible 6 días a la semana para acompañarte en cada etapa.",
+                    url: "https://flighthotelcargo.com/",
+                    tag: "Web agency",
+                    screenshot: "/portfolio/Image/projet1.PNG"
+                },
+                {
+                    title: "RemDigit",
+                    desc: "Un sitio escaparate para una agencia de comunicación digital.",
+                    url: "https://remdigit.netlify.app/",
+                    tag: "Escaparate",
+                    screenshot: "/portfolio/Image/remdigit.PNG"
+                },
+                {
+                    title: "EduConect",
+                    desc: "Una plataforma de formación y coaching en línea.",
+                    url: "https://educonect.netlify.app/",
+                    tag: "En curso",
+                    screenshot: "/portfolio/Image/càaching00.06.01.jpeg"
+                },
+                {
+                    title: "God Remembers",
+                    desc: "Una plataforma culinaria y gastronómica.",
+                    url: "https://godremembers.netlify.app/",
+                    tag: "En curso",
+                    screenshot: "/portfolio/Image/restauto (1).jpeg"
+                }
+            ]
+        };
+
+        const arrowSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+
+        const visitLabel = { fr: "Visiter", en: "Visit", es: "Visitar" };
+        const viewLabel  = { fr: "Voir le projet", en: "View project", es: "Ver proyecto" };
+
+        function buildGrid(lang) {
+            const grid = document.getElementById('grid');
+            if (!grid) return;
+            const projects = projectsData[lang] || projectsData['fr'];
+            const vLabel = visitLabel[lang] || visitLabel['fr'];
+            const pLabel = viewLabel[lang]  || viewLabel['fr'];
+
+            grid.innerHTML = '';
+            projects.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-preview">
+                        <img
+                            src="${p.screenshot}"
+                            alt="Aperçu de ${p.title}"
+                            loading="lazy"
+                            onerror="this.style.display='none'"
+                        />
+                        <div class="preview-overlay">
+                            <a href="${p.url}" target="_blank" rel="noopener">
+                                ${arrowSvg} ${pLabel}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">${p.title}</div>
+                        <div class="card-desc">${p.desc}</div>
+                        <div class="card-footer">
+                            <a href="${p.url}" target="_blank" rel="noopener" class="btn-visit">
+                                ${arrowSvg} ${vLabel}
+                            </a>
+                            <span class="card-tag">${p.tag}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Construction initiale
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = localStorage.getItem('lang') || 'fr';
+            buildGrid(lang);
+        });
+
+        // Reconstruction quand la langue change via le sélecteur
+        document.addEventListener('langChanged', (e) => {
+            buildGrid(e.detail.lang);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accueil - Zachari GANDEKON</title>
+
+    <script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <meta name="description" id="meta_description"
+          content="Zachari GANDEKON - Développeur Full Stack. Création d'expériences web modernes et performantes." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+    <!-- Header chargé dynamiquement -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content animate-on-scroll">
+            <span class="hero-subtitle" data-i18n="hero_greeting">Salut,</span>
+            <p class="hero-title">
+              <span class="perso" data-i18n="hero_i_am">Je suis</span>
+              <span class="textnom" data-i18n="hero_name">Zachari GANDEKON</span><br>
+              <div class="texteComp">
+                <p class="textUn">Un </p>
+                <p class="text-primary" id="textDefil"></p>
+              </div>
+            </p>
+            <p class="hero_description" data-i18n="hero_description">
+              Je crée des solutions web modernes, performantes et intuitives qui résolvent de vrais problèmes. Passionné par le code propre, le design centré utilisateur et les technologies modernes.
+            </p>
+           <div class="hero-buttons">
+  <a href="/portfolio/pages/portfolio.html" class="btn btn-primary" data-i18n="btn_projects">
+    Voir mes projets
+  </a>
+  <a href="/portfolio/pages/contact.html" class="btn btn-outline" data-i18n="btn_contact">
+    Me contacter
+  </a>
+</div>
+            <div class="hero-social-icons">
+              <a href="https://www.facebook.com/profile.php?id=61586409767436" target="_blank" class="hero-social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/zachari-gandekon-4a3361376" target="_blank" class="hero-social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/zachari229" target="_blank" class="hero-social-icon">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://wa.me/message/HHJ4NHJUMYJQB1" target="_blank" class="hero-social-icon">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-image animate-on-scroll">
+            <div class="image-wrapper">
+              <img src="Image/photo.profil.jpeg" alt="Photo de Zachari GANDEKON" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer chargé dynamiquement -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ✅ Ordre correct : translations.js puis main.js -->
+    <script src="/portfolio/js/translations.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
