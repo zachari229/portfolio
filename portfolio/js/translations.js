@@ -530,12 +530,10 @@ portfolio_sub:   "Discover some of my projects.",
     shop_details:     "Ver detalles",
 
     //Portfolio
-
-    // Dans es: { ... }
+// Dans es: { ... }
 nav_portfolio:   "Mis trabajos",
 portfolio_title: "Portfolio",
 portfolio_sub:   "Descubre algunos de mis proyectos.",
-
 
     // Contact
     contact_title:         "Contáctame",
