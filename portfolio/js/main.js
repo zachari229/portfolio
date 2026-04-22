@@ -5,19 +5,33 @@
 // ─── Mobile menu toggle ───────────────────────────────────
 function toggleMobileMenu() {
   const mobileMenu = document.getElementById('mobileMenu');
-  const menuIcon = document.querySelector('.menu-icon');
-  const closeIcon = document.querySelector('.close-icon');
+  const menuIcon   = document.querySelector('.menu-icon');
+  const closeIcon  = document.querySelector('.close-icon');
 
   if (!mobileMenu) return;
 
   mobileMenu.classList.toggle('active');
-  menuIcon.classList.toggle('hidden');
-  closeIcon.classList.toggle('hidden');
+
+  if (menuIcon)  menuIcon.classList.toggle('hidden');
+  if (closeIcon) closeIcon.classList.toggle('hidden');
 }
+
+// Fermer le menu quand on clique un lien
+document.addEventListener('click', function (e) {
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (!mobileMenu) return;
+  if (e.target.classList.contains('nav-link')) {
+    mobileMenu.classList.remove('active');
+    const menuIcon  = document.querySelector('.menu-icon');
+    const closeIcon = document.querySelector('.close-icon');
+    if (menuIcon)  menuIcon.classList.remove('hidden');
+    if (closeIcon) closeIcon.classList.add('hidden');
+  }
+});
 
 // ─── Smooth scroll ────────────────────────────────────────
 function scrollToSection(id) {
-  const element = document.getElementById(id);
+  const element    = document.getElementById(id);
   const mobileMenu = document.getElementById('mobileMenu');
 
   if (element) {
@@ -33,7 +47,6 @@ function initTyped() {
   const el = document.getElementById('textDefil');
   if (!el) return;
 
-  // Si une instance existe déjà, on la détruit avant d'en créer une nouvelle
   if (window.typedInstance) {
     window.typedInstance.destroy();
   }
@@ -101,8 +114,7 @@ async function loadComponent(id, path) {
   }
 }
 
-// ─── Détection automatique du chemin racine ──────────────
-// Fonctionne pour index.html (racine) ET pages/*.html (sous-dossier)
+// ─── Détection automatique du chemin racine ───────────────
 function getRootPath() {
   const parts = window.location.pathname.split('/').filter(Boolean);
   const isInSubfolder = parts[parts.length - 2] === 'pages';
@@ -114,13 +126,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const root = getRootPath();
 
-  // 1. Charger header et footer avec le bon chemin (racine ou sous-dossier)
+  // 1. Charger header et footer
   await Promise.all([
     loadComponent('header-placeholder', root + 'header.html'),
     loadComponent('footer-placeholder', root + 'footer.html')
   ]);
 
-  // 2. Header dans le DOM → initialiser les traductions
+  // 2. Initialiser les traductions
   if (typeof initTranslations === 'function') {
     initTranslations();
   }

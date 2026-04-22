@@ -1,11 +1,13 @@
 <nav class="navbar">
   <div class="container">
     <div class="nav-content">
-      <div class="logo" onclick="window.location.href='/portfolio/index.html'">
+
+      <div class="logo" onclick="window.location.href='/index.html'">
         <span class="logo-text" data-i18n="logo_name">Zachari GANDEKON</span>
       </div>
-      
-      <div class="nav-links">
+
+      <!-- id="mobileMenu" ajouté ici -->
+      <div class="nav-links" id="mobileMenu">
         <a href="/index.html" class="nav-link" data-i18n="nav_home">Accueil</a>
         <a href="/pages/about.html" class="nav-link" data-i18n="nav_about">À propos</a>
         <a href="/pages/cv.html" class="nav-link" data-i18n="nav_cv">CV</a>
@@ -13,7 +15,7 @@
         <a href="/pages/boutique.html" class="nav-link" data-i18n="nav_shop">Boutique</a>
         <a href="/pages/portfolio.html" class="nav-link" data-i18n="nav_blog">Portfolio</a>
         <a href="/pages/contact.html" class="nav-link" data-i18n="nav_contact">Contact</a>
-        
+
         <select class="textElem" id="lang">
           <option value="fr">🇫🇷 FR</option>
           <option value="en">🇬🇧 EN</option>
@@ -22,16 +24,19 @@
       </div>
 
       <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <!-- ≡ visible par défaut -->
         <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
-        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- × caché par défaut -->
+        <svg class="close-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
+
     </div>
   </div>
 </nav>
