@@ -39,12 +39,13 @@
       border: 1px solid #5D64B3;
       padding: 6px 16px;
       border-radius: 100px;
-      margin-bottom: 20px;
+      margin-top: 40px;
+      position: relative;
     }
 
     .section-title {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.05;
@@ -52,7 +53,8 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 16px;
+      margin-top: 20px;
+      position: relative;
     }
 
     .section-sub {

@@ -32,9 +32,10 @@ const translations = {
 
     // Texte défilant (Typed.js) — tableau de chaînes
     typed_strings: [
-      "Développeur Full Stack",
-      "Designer UI/UX",
-      "Créateur de Solutions Web"
+      "développeur Full Stack",
+      "développeur WordPress",
+      "spécialiste SEO",
+      " passionné par la cybersécurité."
     ],
 
     // À propos — Hero
@@ -229,9 +230,10 @@ const translations = {
 
     // Typed.js
     typed_strings: [
-      "Full Stack Developer",
-      "UI/UX Designer",
-      "Web Solutions Creator"
+      "Full Stack developer",
+     "WordPress developer",
+     "SEO specialist",
+     "Cybersecurity enthusiast."
     ],
 
     // À propos
@@ -418,9 +420,10 @@ const translations = {
 
     // Typed.js
     typed_strings: [
-      "Desarrollador Full Stack",
-      "Diseñador UI/UX",
-      "Creador de Soluciones Web"
+      "desarrollador Full Stack",
+      "desarrollador WordPress",
+      "especialista en SEO",
+      "apasionado por la ciberseguridad."
     ],
 
     // À propos
