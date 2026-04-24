@@ -307,7 +307,6 @@ h1, h2, h3, h4 {
         align-items: center;
         position: relative;
         top: 14px;
-        left: 16px;
         z-index: 10001;
     }
 
@@ -319,7 +318,7 @@ h1, h2, h3, h4 {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     color: white;
-    padding: 6px 32px 6px 12px; /* ✅ padding-right agrandi pour laisser place à la flèche */
+    padding: 6px 32px 6px 12px; /*  padding-right agrandi pour laisser place à la flèche */
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
