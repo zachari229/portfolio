@@ -173,13 +173,9 @@ const translations = {
     shop_details:     "Voir les détails",
 
     // Portfolio
-// Dans fr: { ... }
-nav_portfolio:   "Mes réalisations",
-portfolio_title: "Portfolio",
-portfolio_sub:   "Découvrez quelques-uns de mes projets.",
-
-
-
+    nav_portfolio:   "Mes réalisations",
+    portfolio_title: "Portfolio",
+    portfolio_sub:   "Découvrez quelques-uns de mes projets.",
 
     // Contact
     contact_title:         "Contactez-moi",
@@ -365,11 +361,10 @@ portfolio_sub:   "Découvrez quelques-uns de mes projets.",
     shop_buy:         "Buy",
     shop_details:     "View details",
 
-    //Portfolio
-    // Dans en: { ... }
-nav_portfolio:   "My work",
-portfolio_title: "Portfolio",
-portfolio_sub:   "Discover some of my projects.",
+    // Portfolio
+    nav_portfolio:   "My work",
+    portfolio_title: "Portfolio",
+    portfolio_sub:   "Discover some of my projects.",
 
     // Contact
     contact_title:         "Contact me",
@@ -470,10 +465,36 @@ portfolio_sub:   "Discover some of my projects.",
     tag_webdesign:        "Diseño web",
     about_cta_title:      "¿Tienes un proyecto en mente?",
     about_cta_desc:       "Estoy disponible para nuevas colaboraciones: sitios web, e-commerce o cualquier otro proyecto web.",
+
+    // CV
     cv_title:         "Mi Currículum",
+    cv_page_tag:      "Curriculum Vitae",
+    cv_main_title:    "Mi Trayectoria",
+    cv_intro:         "Desarrollador web apasionado especializado en WordPress, No Code y SEO, diseño sitios web modernos y de alto rendimiento adaptados a las necesidades de empresas, emprendedores y particulares.",
     cv_download:      "Descargar CV",
+    cv_tech_skills:   "Habilidades técnicas",
+    cv_other_skills:  "Otras habilidades",
+    cv_tag_webwriting:"Redacción web",
+    cv_tag_import:    "Importación desde China",
+    cv_tag_ia_design: "Diseño ultra-realista IA",
+    cv_tag_research:  "Investigación en Internet",
+    cv_tag_ia_resp:   "IA responsable",
+    cv_languages:     "Idiomas",
+    cv_lang_fr:       "Francés",
+    cv_lang_en:       "Inglés",
+    cv_education:     "Formación académica",
+    cv_edu1_date:     "2023 — En curso",
+    cv_edu1_title:    "Instituto Universitario de Tecnología",
+    cv_edu1_sub:      "IUT Parakou · Licenciatura profesional",
+    cv_edu2_title:    "Bachillerato Serie D",
+    cv_extra_training:"Formaciones complementarias",
+    cv_extra1_name:   "Importación / Exportación internacional",
+    cv_extra2_name:   "Desarrollo web WordPress",
+    cv_extra3_name:   "Investigación en Internet y más allá",
+    cv_extra4_name:   "Bases de la IA",
+    cv_extra5_name:   "IA responsable",
+    cv_extra6_name:   "IA para todos",
     cv_experience:    "Experiencia",
-    cv_education:     "Educación",
     cv_skills:        "Habilidades",
 
     // Services
@@ -529,11 +550,10 @@ portfolio_sub:   "Discover some of my projects.",
     shop_buy:         "Comprar",
     shop_details:     "Ver detalles",
 
-    //Portfolio
-// Dans es: { ... }
-nav_portfolio:   "Mis trabajos",
-portfolio_title: "Portfolio",
-portfolio_sub:   "Descubre algunos de mis proyectos.",
+    // Portfolio
+    nav_portfolio:   "Mis trabajos",
+    portfolio_title: "Portfolio",
+    portfolio_sub:   "Descubre algunos de mis proyectos.",
 
     // Contact
     contact_title:         "Contáctame",
@@ -624,23 +644,36 @@ function applyTranslation(lang) {
  * À appeler APRÈS que le header soit injecté dans le DOM.
  */
 function initTranslations() {
-  const savedLang = localStorage.getItem("lang") || "fr";
-  const select = document.getElementById("lang");
+  console.log('initTranslations appelé');
+  
+  const savedLang  = localStorage.getItem("lang") || "fr";
+  const langMain   = document.getElementById("lang");
+  const langMobile = document.getElementById("lang-mobile");
 
-  if (select) {
-    // Appliquer la langue sauvegardée au sélecteur
-    select.value = savedLang;
+  console.log('savedLang:', savedLang);
+  console.log('langMain trouvé:', langMain);
+  console.log('langMobile trouvé:', langMobile);
 
-    // Écouter les changements de langue
-    select.addEventListener("change", function () {
-      applyTranslation(this.value);
+  if (langMain)   langMain.value   = savedLang;
+  if (langMobile) langMobile.value = savedLang;
+
+  if (langMain) {
+    langMain.addEventListener("change", function () {
+      console.log('Changement langue desktop:', this.value);
+      const lang = this.value;
+      if (langMobile) langMobile.value = lang;
+      applyTranslation(lang);
     });
-
-    document.dispatchEvent(new CustomEvent('langChanged', {
-        detail: { lang: this.value }
-      }));
   }
 
-  // Appliquer la traduction au chargement
+  if (langMobile) {
+    langMobile.addEventListener("change", function () {
+      console.log('Changement langue mobile:', this.value);
+      const lang = this.value;
+      if (langMain) langMain.value = lang;
+      applyTranslation(lang);
+    });
+  }
+
   applyTranslation(savedLang);
 }

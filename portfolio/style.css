@@ -128,8 +128,8 @@ h1, h2, h3, h4 {
 
 .perso {
     font-family: var(--font-display);
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 500;
     color: #fff;
     line-height: 1.1;
     margin-bottom: 1.5rem;
@@ -142,8 +142,8 @@ h1, h2, h3, h4 {
 
 .textnom {
     font-family: var(--font-display);
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 500;
     color: #6366f1;
     line-height: 1.1;
     margin-bottom: 1.5rem;
@@ -245,7 +245,6 @@ h1, h2, h3, h4 {
     cursor: pointer;
     color: white;
     padding: 8px;
-    /* Toujours au-dessus du menu overlay */
     position: relative;
     z-index: 10001;
 }
@@ -286,15 +285,53 @@ h1, h2, h3, h4 {
     color: #fff;
 }
 
+/* ── Sélecteur de langue mobile : caché par défaut ── */
+.lang-switcher-mobile {
+    display: none;
+    
+}
+
 /* ==============================
    MOBILE — max 768px
    ============================== */
 @media (max-width: 768px) {
 
+    /* Masquer le logo */
+    .logo {
+        display: none !important;
+    }
+
+    /* Afficher et positionner le sélecteur de langue mobile */
+    .lang-switcher-mobile {
+        display: flex;
+        align-items: center;
+        position: relative;
+        top: 14px;
+        left: 16px;
+        z-index: 10001;
+    }
+
+    .lang-switcher-mobile select {
+    background-color: rgba(255, 255, 255, 0.08);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    color: white;
+    padding: 6px 32px 6px 12px; /* ✅ padding-right agrandi pour laisser place à la flèche */
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
     /* Bouton hamburger visible et fixé en haut à droite */
     .mobile-menu-btn {
         display: flex !important;
-        position: fixed;
+        position: relative;
         top: 12px;
         right: 16px;
         z-index: 10001;
@@ -310,14 +347,12 @@ h1, h2, h3, h4 {
         width: 100vw;
         height: 100vh;
         background: #0f0f0f;
-        /* padding-top grand pour descendre les liens sous la navbar */
         padding-top: 80px;
         padding-left: 0;
         padding-right: 0;
         padding-bottom: 40px;
         z-index: 10000;
         align-items: center;
-        /* flex-start : les liens commencent en haut, pas coupés */
         justify-content: flex-start;
         gap: 0;
         overflow-y: auto;
@@ -347,7 +382,7 @@ h1, h2, h3, h4 {
         background: rgba(99, 102, 241, 0.08);
     }
 
-    /* Sélecteur de langue */
+    /* Sélecteur de langue dans le menu mobile */
     #mobileMenu select {
         margin-top: 28px;
         color: white;
@@ -372,6 +407,11 @@ h1, h2, h3, h4 {
 @media (min-width: 769px) {
 
     .mobile-menu-btn {
+        display: none !important;
+    }
+
+    /* Cacher le sélecteur mobile sur desktop */
+    .lang-switcher-mobile {
         display: none !important;
     }
 
@@ -685,28 +725,28 @@ h1, h2, h3, h4 {
     transform: translateY(0);
 }
 
-
-
-/* Bouton WhatsApp flottant */
+/* ==============================
+   BOUTON WHATSAPP FLOTTANT
+   ============================== */
 .whatsapp-float {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #25D366;
-  color: white;
-  border-radius: 50%;
-  width: 55px;
-  height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-  z-index: 9999;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
 }

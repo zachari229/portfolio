@@ -121,6 +121,28 @@ function getRootPath() {
   return isInSubfolder ? '../' : '';
 }
 
+// ─── Synchronisation des selects de langue ────────────────
+function initLangSync() {
+  const langMain   = document.getElementById('lang');
+  const langMobile = document.getElementById('lang-mobile');
+
+  if (!langMain || !langMobile) return;
+
+  // Aligner le select mobile sur la valeur actuelle du principal
+  langMobile.value = langMain.value;
+
+  // Changement depuis le select mobile → met à jour le principal
+  langMobile.addEventListener('change', function () {
+    langMain.value = langMobile.value;
+    langMain.dispatchEvent(new Event('change'));
+  });
+
+  // Changement depuis le select principal → met à jour le mobile
+  langMain.addEventListener('change', function () {
+    langMobile.value = langMain.value;
+  });
+}
+
 // ─── Point d'entrée principal ─────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -132,12 +154,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadComponent('footer-placeholder', root + 'footer.html')
   ]);
 
-  // 2. Initialiser les traductions
+  // 2. Synchroniser les deux selects de langue
+  initLangSync();
+
+  // 3. Initialiser les traductions
   if (typeof initTranslations === 'function') {
     initTranslations();
   }
 
-  // 3. Initialiser les autres fonctionnalités
+  // 4. Initialiser les autres fonctionnalités
   initTyped();
   initProgressBars();
   initScrollAnimations();
