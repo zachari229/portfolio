@@ -27,7 +27,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden
 }
-
+/*
 nav {
     position: fixed;
     top: 0;
@@ -54,7 +54,7 @@ nav {
 .logo span {
     color: var(--accent)
 }
-
+*/
 .links {
     display: flex;
     gap: 2rem;
@@ -108,7 +108,7 @@ nav {
 
 h1 {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -.03em;
