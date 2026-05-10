@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Témoignages - Zachari GANDEKON</title>
+
+ <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/admin-temoignages.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- ═══════ CONFIG SUPABASE ═══════ -->
+  <script>
+    const SUPABASE_URL      = 'https://oqmpjnmdjtojbbdvgjac.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_yfhMp1K3qFeyyjmyuAbtAg_iFb5rVoP';
+    /* Mot de passe simple pour protéger la page admin.
+       Changez cette valeur (ou utilisez Supabase Auth pour mieux sécuriser). */
+    const ADMIN_PASSWORD    = 'zachari-admin-2025';
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  
+</head>
+<body>
+
+  <!-- Header chargé dynamiquement -->
+    <div id="header-placeholder"></div>
+
+<!-- ═══ LOGIN ═══ -->
+<div class="login-wrap" id="login-wrap">
+  <div class="login-box">
+    <h2>Admin Panel</h2>
+    <p>Accès réservé à Zachari GANDEKON</p>
+    <input type="password" id="pwd" placeholder="Mot de passe admin" />
+    <span class="login-err" id="login-err">Mot de passe incorrect</span>
+    <br />
+    <button class="btn" onclick="doLogin()">
+      Connexion
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ═══ APP ═══ -->
+<div class="app" id="app">
+  <header>
+    <div class="header-left">
+      <a href="/" class="logo">Zachari<span>.</span></a>
+      <span class="badge-admin">Admin</span>
+    </div>
+    <div style="display:flex;gap:.75rem;align-items:center">
+      <a href="/pages/temoignages" class="btn ghost sm">← Voir la page</a>
+      <button class="btn ghost sm" onclick="logout()">Déconnexion</button>
+    </div>
+  </header>
+
+  <div class="statsbar" id="statsbar">
+    <div class="scard pending"><div class="scard-n" id="cnt-pending">—</div><div class="scard-l">En attente</div></div>
+    <div class="scard approved"><div class="scard-n" id="cnt-approved">—</div><div class="scard-l">Approuvés</div></div>
+    <div class="scard rejected"><div class="scard-n" id="cnt-rejected">—</div><div class="scard-l">Rejetés</div></div>
+    <div class="scard"><div class="scard-n" id="cnt-total">—</div><div class="scard-l">Total</div></div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="pending" onclick="switchTab(this)">En attente</div>
+    <div class="tab" data-tab="approved" onclick="switchTab(this)">Approuvés</div>
+    <div class="tab" data-tab="rejected" onclick="switchTab(this)">Rejetés</div>
+    <div class="tab" data-tab="all" onclick="switchTab(this)">Tous</div>
+  </div>
+
+  <div class="content">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Client</th>
+            <th>Note</th>
+            <th>Projet</th>
+            <th>Témoignage</th>
+            <th>Date</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr class="skel-row"><td><div class="skel-bar" style="width:120px"></div></td><td><div class="skel-bar" style="width:60px"></div></td><td><div class="skel-bar" style="width:80px"></div></td><td><div class="skel-bar" style="width:240px"></div></td><td><div class="skel-bar" style="width:70px"></div></td><td><div class="skel-bar" style="width:70px"></div></td><td><div class="skel-bar" style="width:120px"></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Footer chargé dynamiquement -->
+    <div id="footer-placeholder"></div>
+
+<!-- Ordre correct : translations.js puis main.js -->
+<script src="../js/translations.js"></script>
+<script src="../js/main.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let currentTab = 'pending';
+let allData = [];
+
+/* ── Login ── */
+function doLogin(){
+  const v = document.getElementById('pwd').value;
+  if(v === ADMIN_PASSWORD){
+    document.getElementById('login-wrap').style.display='none';
+    document.getElementById('app').classList.add('visible');
+    sessionStorage.setItem('admin_ok','1');
+    loadAll();
+  } else {
+    document.getElementById('login-err').classList.add('show');
+  }
+}
+document.getElementById('pwd').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
+function logout(){ sessionStorage.removeItem('admin_ok'); location.reload(); }
+if(sessionStorage.getItem('admin_ok')==='1'){
+  document.getElementById('login-wrap').style.display='none';
+  document.getElementById('app').classList.add('visible');
+  loadAll();
+}
+
+/* ── Data ── */
+async function loadAll(){
+  const { data, error } = await db
+    .from('temoignages')
+    .select('*')
+    .order('created_at',{ascending:false});
+
+  if(error){ toast('Erreur de chargement','ko'); return; }
+  allData = data;
+  updateStats();
+  renderTable(currentTab);
+}
+
+function updateStats(){
+  const cnt = s => allData.filter(t=>t.statut===s).length;
+  document.getElementById('cnt-pending').textContent  = cnt('pending');
+  document.getElementById('cnt-approved').textContent = cnt('approved');
+  document.getElementById('cnt-rejected').textContent = cnt('rejected');
+  document.getElementById('cnt-total').textContent    = allData.length;
+}
+
+function switchTab(el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  currentTab = el.dataset.tab;
+  renderTable(currentTab);
+}
+
+/* ── Render table ── */
+function renderTable(filter){
+  const rows = filter==='all' ? allData : allData.filter(t=>t.statut===filter);
+  const tbody = document.getElementById('tbody');
+
+  if(!rows.length){
+    tbody.innerHTML=`<tr class="empty-row"><td colspan="7">Aucun témoignage dans cette catégorie</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = rows.map(t=>{
+    const st = [...Array(5)].map((_,i)=>`<span class="${i<t.note?'st':'st-e'}">★</span>`).join('');
+    const date = new Date(t.created_at).toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});
+    const pill = {
+      pending:  `<span class="status-pill sp-pending">En attente</span>`,
+      approved: `<span class="status-pill sp-approved">Approuvé</span>`,
+      rejected: `<span class="status-pill sp-rejected">Rejeté</span>`,
+    }[t.statut] || '';
+
+    const actions = t.statut==='pending'
+      ? `<button class="btn ok-btn sm" onclick="setStatus('${t.id}','approved')">✓ Approuver</button>
+         <button class="btn err-btn sm" onclick="setStatus('${t.id}','rejected')">✗ Rejeter</button>`
+      : t.statut==='approved'
+      ? `<button class="btn err-btn sm" onclick="setStatus('${t.id}','rejected')">✗ Rejeter</button>
+         <button class="btn ghost sm" onclick="delRow('${t.id}')">Supprimer</button>`
+      : `<button class="btn ok-btn sm" onclick="setStatus('${t.id}','approved')">✓ Approuver</button>
+         <button class="btn ghost sm" onclick="delRow('${t.id}')">Supprimer</button>`;
+
+    return `<tr>
+      <td>
+        <div class="tdname">${esc(t.nom)}</div>
+        <div class="tdrole">${esc(t.role)}</div>
+        ${t.email?`<div class="tdrole">${esc(t.email)}</div>`:''}
+      </td>
+      <td><div class="stars">${st}</div></td>
+      <td style="color:var(--mu);font-size:.82rem">${t.type_projet?esc(t.type_projet):'—'}</td>
+      <td><div class="tdmsg">${esc(t.message)}</div></td>
+      <td class="tddate">${date}</td>
+      <td>${pill}</td>
+      <td><div class="actions">${actions}</div></td>
+    </tr>`;
+  }).join('');
+}
+
+/* ── Actions ── */
+async function setStatus(id, statut){
+  const { error } = await db.from('temoignages').update({statut}).eq('id',id);
+  if(error){ toast('Erreur de mise à jour','ko'); return; }
+  const idx = allData.findIndex(t=>t.id===id);
+  if(idx>-1) allData[idx].statut = statut;
+  updateStats();
+  renderTable(currentTab);
+  toast(statut==='approved'?'Témoignage approuvé ✓':'Témoignage rejeté');
+}
+
+async function delRow(id){
+  if(!confirm('Supprimer définitivement ce témoignage ?')) return;
+  const { error } = await db.from('temoignages').delete().eq('id',id);
+  if(error){ toast('Erreur de suppression','ko'); return; }
+  allData = allData.filter(t=>t.id!==id);
+  updateStats();
+  renderTable(currentTab);
+  toast('Témoignage supprimé');
+}
+
+/* ── Helpers ── */
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function toast(msg,type='ok'){
+  const t=document.getElementById('toast');
+  t.className=`toast ${type}`;
+  t.textContent=(type==='ok'?'✓ ':'✗ ')+msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+</script>
+</body>
+</html>

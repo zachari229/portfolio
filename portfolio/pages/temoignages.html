@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Témoignages - Zachari GANDEKON</title>
+   <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/temoignages.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- ════════════════════════════════════
+       CONFIG SUPABASE — À personnaliser
+       Settings → API dans votre projet
+  ════════════════════════════════════ -->
+  <script>
+   const SUPABASE_URL      = 'https://oqmpjnmdjtojbbdvgjac.supabase.co';
+   const SUPABASE_ANON_KEY = 'sb_publishable_yfhMp1K3qFeyyjmyuAbtAg_iFb5rVoP';
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  
+</head>
+<body>
+
+<!-- Header chargé dynamiquement -->
+    <div id="header-placeholder"></div>
+
+<section class="hero">
+  <div class="pill">⭐ Ce que disent mes clients</div>
+  <h1>Des projets qui <em>parlent</em><br>d'eux-mêmes</h1>
+  <p>Chaque ligne de code est une promesse tenue. Voici ce que pensent ceux qui m'ont fait confiance.</p>
+  <a href="#form" class="btn" id="cta-btn">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Laisser un avis
+  </a>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n" id="s-count">—</div><div class="stat-l">Clients satisfaits</div></div>
+  <div class="stat"><div class="stat-n" id="s-avg">—</div><div class="stat-l">Note moyenne</div></div>
+  <div class="stat"><div class="stat-n" id="s-pct">—</div><div class="stat-l">Recommandent</div></div>
+</div>
+
+<section class="section">
+  <p class="section-title"><span>Témoignages</span> approuvés</p>
+  <div class="grid" id="grid">
+    <div class="skel"></div><div class="skel"></div><div class="skel"></div>
+  </div>
+</section>
+
+<section class="section" id="form">
+  <div class="fw">
+    <div class="fh">
+      <h2>Partagez votre expérience</h2>
+      <p>Votre retour sera publié après validation. Merci pour votre confiance !</p>
+    </div>
+    <form id="tf" novalidate>
+      <div class="r2">
+        <div class="fg">
+          <label>Votre nom *</label>
+          <input id="f-nom" type="text" placeholder="Jean Dupont" />
+          <span class="errmsg" id="e-nom">Champ requis</span>
+        </div>
+        <div class="fg">
+          <label>Poste / Entreprise *</label>
+          <input id="f-role" type="text" placeholder="CEO, MaSociété" />
+          <span class="errmsg" id="e-role">Champ requis</span>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Email (non publié)</label>
+        <input id="f-email" type="email" placeholder="votre@email.com" />
+      </div>
+      <div class="fg">
+        <label>Note *</label>
+        <div class="rg" id="rg">
+          <div class="rs" data-v="1">★</div>
+          <div class="rs" data-v="2">★</div>
+          <div class="rs" data-v="3">★</div>
+          <div class="rs" data-v="4">★</div>
+          <div class="rs" data-v="5">★</div>
+        </div>
+        <span class="errmsg" id="e-note">Sélectionnez une note</span>
+      </div>
+      <div class="fg">
+        <label>Type de projet</label>
+        <select id="f-type">
+          <option value="">— Sélectionner —</option>
+          <option>Site vitrine</option>
+          <option>Application web</option>
+          <option>E-commerce</option>
+          <option>API / Back-end</option>
+          <option>Tableau de bord</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Votre témoignage *</label>
+        <textarea id="f-msg" placeholder="Décrivez votre expérience…"></textarea>
+        <span class="errmsg" id="e-msg">Champ requis</span>
+      </div>
+      <div class="frow">
+        <span class="fnote">* Requis · Publié après validation</span>
+        <button type="submit" class="btn" id="sbtn">
+          Envoyer
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer chargé dynamiquement -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Ordre correct : translations.js puis main.js -->
+<script src="../js/translations.js"></script>
+<script src="../js/main.js"></script>
+
+
+<div class="toast" id="toast"></div>
+
+<script>
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+/* Avatar couleur déterministe */
+const AVS = [
+  {bg:'rgba(108,99,255,.2)',c:'#a89cff'},
+  {bg:'rgba(255,101,132,.2)',c:'#ff9aaa'},
+  {bg:'rgba(45,212,191,.2)',c:'#5eead4'},
+  {bg:'rgba(245,197,66,.2)',c:'#fcd34d'},
+  {bg:'rgba(56,189,248,.2)',c:'#7dd3fc'},
+];
+function avColor(name){ let h=0; for(let ch of name) h=(h*31+ch.charCodeAt(0))%AVS.length; return AVS[h]; }
+function initials(name){ return name.trim().split(' ').slice(0,2).map(w=>w[0].toUpperCase()).join(''); }
+function stars(n){ return [...Array(5)].map((_,i)=>`<span class="${i<n?'st':'st-e'}">★</span>`).join(''); }
+function fmtDate(iso){ return new Date(iso).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* Chargement */
+async function load(){
+  const grid = document.getElementById('grid');
+  const { data, error } = await db
+    .from('temoignages')
+    .select('id,nom,role,note,type_projet,message,created_at')
+    .eq('statut','approved')
+    .order('created_at',{ascending:false});
+
+  if(error){
+    grid.innerHTML=`<div class="empty"><div class="empty-ico">⚠️</div><p>Erreur de connexion Supabase.<br>Vérifiez votre configuration.</p></div>`;
+    return;
+  }
+
+  const n = data.length;
+  document.getElementById('s-count').textContent = n||'0';
+  document.getElementById('s-avg').textContent = n?(data.reduce((a,t)=>a+t.note,0)/n).toFixed(1):'—';
+  document.getElementById('s-pct').textContent = n?Math.round(data.filter(t=>t.note>=4).length/n*100)+'%':'—';
+
+  if(!n){
+    grid.innerHTML=`<div class="empty"><div class="empty-ico">💬</div><p>Aucun témoignage pour l'instant.<br>Soyez le premier à partager votre expérience !</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = data.map((t,i)=>{
+    const av=avColor(t.nom);
+    return `<div class="card ${i===0?'feat':''}">
+      <div class="stars">${stars(t.note)}</div>
+      <p class="card-txt">${esc(t.message)}</p>
+      <div class="card-ft">
+        <div class="av" style="background:${av.bg};color:${av.c}">${initials(t.nom)}</div>
+        <div><div class="card-name">${esc(t.nom)}</div><div class="card-role">${esc(t.role)}</div></div>
+        ${t.type_projet?`<span class="badge">${esc(t.type_projet)}</span>`:''}
+      </div>
+      <div class="card-date">${fmtDate(t.created_at)}</div>
+    </div>`;
+  }).join('');
+}
+
+/* Rating stars */
+let rating=0;
+const rstars=document.querySelectorAll('.rs');
+rstars.forEach(s=>{
+  s.addEventListener('click',()=>{ rating=+s.dataset.v; upStars(rating); document.getElementById('e-note').classList.remove('show'); });
+  s.addEventListener('mouseenter',()=>upStars(+s.dataset.v));
+});
+document.getElementById('rg').addEventListener('mouseleave',()=>upStars(rating));
+function upStars(v){ rstars.forEach(s=>s.classList.toggle('on',+s.dataset.v<=v)); }
+
+/* Toast */
+function toast(msg,type='ok'){
+  const t=document.getElementById('toast');
+  t.className=`toast ${type}`;
+  t.textContent=(type==='ok'?'✓ ':'✗ ')+msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),4500);
+}
+
+/* Formulaire */
+document.getElementById('tf').addEventListener('submit',async e=>{
+  e.preventDefault();
+  let ok=true;
+  const nom  = document.getElementById('f-nom').value.trim();
+  const role = document.getElementById('f-role').value.trim();
+  const msg  = document.getElementById('f-msg').value.trim();
+
+  if(!nom){ document.getElementById('e-nom').classList.add('show');  ok=false; }
+  else     document.getElementById('e-nom').classList.remove('show');
+  if(!role){ document.getElementById('e-role').classList.add('show'); ok=false; }
+  else      document.getElementById('e-role').classList.remove('show');
+  if(!rating){ document.getElementById('e-note').classList.add('show'); ok=false; }
+  else         document.getElementById('e-note').classList.remove('show');
+  if(!msg){ document.getElementById('e-msg').classList.add('show');  ok=false; }
+  else      document.getElementById('e-msg').classList.remove('show');
+
+  if(!ok) return;
+
+  const btn=document.getElementById('sbtn');
+  btn.textContent='Envoi en cours…'; btn.disabled=true;
+
+  const { error } = await db.from('temoignages').insert([{
+    nom, role,
+    email: document.getElementById('f-email').value.trim()||null,
+    note: rating,
+    type_projet: document.getElementById('f-type').value||null,
+    message: msg,
+    statut: 'pending'
+  }]);
+
+  btn.innerHTML='Envoyer <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+  btn.disabled=false;
+
+  if(error){ toast('Erreur lors de l\'envoi. Réessayez.','ko'); }
+  else {
+    toast('Merci ! Votre avis sera publié après validation.');
+    e.target.reset(); rating=0; upStars(0);
+  }
+});
+
+/* Smooth scroll */
+document.getElementById('cta-btn').addEventListener('click',e=>{
+  e.preventDefault();
+  document.getElementById('form').scrollIntoView({behavior:'smooth'});
+});
+
+load();
+</script>
+</body>
+</html>
