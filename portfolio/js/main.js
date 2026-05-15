@@ -148,23 +148,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const root = getRootPath();
 
-  // 1. Charger header et footer EN PARALLÈLE sans bloquer
-  Promise.all([
+  // 1. Charger header et footer
+  await Promise.all([
     loadComponent('header-placeholder', root + 'header.html'),
     loadComponent('footer-placeholder', root + 'footer.html')
-  ]).then(() => {
-    // 2. Synchroniser les deux selects de langue
-    initLangSync();
+  ]);
 
-    // 3. Initialiser les traductions
-    if (typeof initTranslations === 'function') {
-      initTranslations();
-    }
-  });
+  // 2. Synchroniser les deux selects de langue
+  initLangSync();
 
-  // 4. Initialiser les autres fonctionnalités IMMÉDIATEMENT
-  // sans attendre le header/footer
+  // 3. Initialiser les traductions
+  if (typeof initTranslations === 'function') {
+    initTranslations();
+  }
+
+  // 4. Initialiser les autres fonctionnalités
   initTyped();
   initProgressBars();
   initScrollAnimations();
 });
+
