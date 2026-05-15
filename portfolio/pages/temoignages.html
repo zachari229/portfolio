@@ -5,25 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Témoignages - Zachari GANDEKON</title>
 
-  <!-- CSS -->
+  <!-- CSS critique -->
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="../css/temoignages.css" />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts non bloquant -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" 
+        rel="stylesheet" media="print" onload="this.media='all'">
 
-  <!-- ════════════════════════════════════
-       CONFIG SUPABASE
-  ════════════════════════════════════ -->
-  <script>
-    const SUPABASE_URL      = 'https://oqmpjnmdjtojbbdvgjac.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_yfhMp1K3qFeyyjmyuAbtAg_iFb5rVoP';
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-
+  <!-- FontAwesome non bloquant -->
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        media="print" onload="this.media='all'">
 </head>
 <body>
 
@@ -119,6 +114,14 @@
 
   <!-- Footer chargé dynamiquement -->
   <div id="footer-placeholder"></div>
+<!-- ════════════════════════════════════
+       CONFIG SUPABASE
+  ════════════════════════════════════ -->
+  <script>
+    const SUPABASE_URL      = 'https://oqmpjnmdjtojbbdvgjac.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_yfhMp1K3qFeyyjmyuAbtAg_iFb5rVoP';
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
   <!-- Ordre correct : translations.js puis main.js -->
   <script src="../js/translations.js"></script>
