@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio - Zachari GANDEKON</title>
@@ -10,18 +10,27 @@
     <link rel="stylesheet" href="../css/portfolio.css" />
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <!-- Header chargé dynamiquement -->
     <div id="header-placeholder"></div>
 
     <header class="section-header">
-        <div class="section-label" data-i18n="nav_portfolio">Mes réalisations</div>
-        <h1 class="section-title" data-i18n="portfolio_title">Portfolio</h1>
-        <p class="section-sub" data-i18n="portfolio_sub">Découvrez quelques-uns de mes projets.</p>
+      <div class="section-label" data-i18n="nav_portfolio">
+        Mes réalisations
+      </div>
+      <h1 class="section-title" data-i18n="portfolio_title">Portfolio</h1>
+      <p class="section-sub" data-i18n="portfolio_sub">
+        Découvrez quelques-uns de mes projets.
+      </p>
     </header>
 
     <div class="portfolio-grid" id="grid"></div>
@@ -30,132 +39,143 @@
     <div id="footer-placeholder"></div>
 
     <!-- Ordre correct : translations.js puis main.js -->
-<script src="../js/translations.js"></script>
-<script src="../js/main.js"></script>
+    <script src="../js/translations.js"></script>
+    <script src="../js/main.js"></script>
 
     <!-- 3. Logique portfolio -->
     <script src="/js/portfolio.js"></script>
 
     <script>
-        // Données des projets dans les 3 langues
-        const projectsData = {
-            fr: [
-                {
-                    title: "Flighthotelcargo",
-                    desc: "Une agence de voyage et de logistique internationale humaine, réactive et disponible 6j/7 pour vous accompagner à chaque étape.",
-                    url: "https://flighthotelcargo.com/",
-                    tag: "Agence web",
-                    screenshot: "/Image/projet1.jpeg"
-                },
+      // Données des projets dans les 3 langues
+      const projectsData = {
+        fr: [
+          {
+            title: "",
+            desc: "Une agence de voyage et de logistique internationale humaine, réactive et disponible 6j/7 pour vous accompagner à chaque étape.",
+            url: "https://flighthotelcargo.com/",
+            tag: "Agence web",
+            screenshot: "/Image/projet1.webp",
+          },
+          {
+            title: "Prime Care",
+            desc: "PrimeCare offre des services de soins à domicile certifiés et empreints de compassion : soins personnels, aide à la prise de médicaments, transport sécurisé et assistance 24 h/24 et 7 j/7. Une entreprise de confiance pour les familles de la région.",
+            url: "https://ukgp2yflg0.wpdns.site/",
+            tag: "Site de soins à domicile",
+            screenshot: "/Image/Prime Care.webp",
+          },
 
-                {
-                    title: "PicNIC Tous en Blanc",
-                    desc: "PicNIC Tous en Blanc est une plateforme de billetterie en ligne dédiée à l’événement du même nom. Elle permet aux participants d’acheter leurs tickets facilement, de consulter les informations et de recevoir leurs billets numériques. Elle offre aussi aux organisateurs un suivi efficace des ventes et des participants. C’est une solution moderne pour gérer l’accès à cet événement exclusif et convivial.",
-                    url: "https://picnic-tous-en-blanc.vercel.app/",
-                    tag: "Site de billetterie",
-                    screenshot: "/Image/picnic.jpeg"
-                },
-                {
-                    title: "RemDigit",
-                    desc: "Un site vitrine pour une agence de communication digitale.",
-                    url: "https://remdigit.netlify.app/",
-                    tag: "Site vitrine",
-                    screenshot: "/Image/projet3.jpeg"
-                },
-                {
-                    title: "EduConect",
-                    desc: "Une plateforme de formation et de coaching en ligne.",
-                    url: "https://educonect.netlify.app/",
-                    tag: "En cours",
-                    screenshot: "/Image/càaching00.06.01.jpeg"
-                },
-                {
-                    title: "God Remembers",
-                    desc: "Une plateforme culinaire et gastronomique.",
-                    url: "https://godremembers.netlify.app/",
-                    tag: "En cours",
-                    screenshot: "/Image/restauto (1).jpeg"
-                }
-            ],
-            en: [
-                {
-                    title: "Flighthotelcargo",
-                    desc: "A human, responsive travel and international logistics agency, available 6 days a week to support you at every step.",
-                    url: "https://flighthotelcargo.com/",
-                    tag: "Web agency",
-                    screenshot: "/Image/projet1.jpeg"
-                },
-                {
-                    title: "RemDigit",
-                    desc: "A showcase website for a digital communication agency.",
-                    url: "https://remdigit.netlify.app/",
-                    tag: "Showcase",
-                    screenshot: "/Image/projet3.jpeg"
-                },
-                {
-                    title: "EduConect",
-                    desc: "An online training and coaching platform.",
-                    url: "https://educonect.netlify.app/",
-                    tag: "In progress",
-                    screenshot: "/Image/càaching00.06.01.jpeg"
-                },
-                {
-                    title: "God Remembers",
-                    desc: "A culinary and gastronomic platform.",
-                    url: "https://godremembers.netlify.app/",
-                    tag: "In progress",
-                    screenshot: "/Image/restauto (1).jpeg"
-                }
-            ],
-            es: [
-                {
-                    title: "Flighthotelcargo",
-                    desc: "Una agencia de viajes y logística internacional humana, reactiva y disponible 6 días a la semana para acompañarte en cada etapa.",
-                    url: "https://flighthotelcargo.com/",
-                    tag: "Web agency",
-                    screenshot: "/Image/projet1.jpeg"
-                },
-                {
-                    title: "RemDigit",
-                    desc: "Un sitio escaparate para una agencia de comunicación digital.",
-                    url: "https://remdigit.netlify.app/",
-                    tag: "Escaparate",
-                    screenshot: "/Image/projet3.jpeg"
-                },
-                {
-                    title: "EduConect",
-                    desc: "Una plataforma de formación y coaching en línea.",
-                    url: "https://educonect.netlify.app/",
-                    tag: "En curso",
-                    screenshot: "/Image/càaching00.06.01.jpeg"
-                },
-                {
-                    title: "God Remembers",
-                    desc: "Una plataforma culinaria y gastronómica.",
-                    url: "https://godremembers.netlify.app/",
-                    tag: "En curso",
-                    screenshot: "/Image/restauto (1).jpeg"
-                }
-            ]
-        };
+          {
+            title: "PicNIC Tous en Blanc",
+            desc: "PicNIC Tous en Blanc est une plateforme de billetterie en ligne dédiée à l’événement du même nom. Elle permet aux participants d’acheter leurs tickets facilement, de consulter les informations et de recevoir leurs billets numériques. Elle offre aussi aux organisateurs un suivi efficace des ventes et des participants. C’est une solution moderne pour gérer l’accès à cet événement exclusif et convivial.",
+            url: "https://picnic-tous-en-blanc.vercel.app/",
+            tag: "Site de billetterie",
+            screenshot: "/Image/picnic.webp",
+          },
+          {
+            title: "RemDigit",
+            desc: "Un site vitrine pour une agence de communication digitale.",
+            url: "https://remdigit.netlify.app/",
+            tag: "Site vitrine",
+            screenshot: "/Image/projet3.webp",
+          },
+          {
+            title: "EduConect",
+            desc: "Une plateforme de formation et de coaching en ligne.",
+            url: "https://educonect.netlify.app/",
+            tag: "En cours",
+            screenshot: "/Image/càaching00.06.01.webp",
+          },
+          {
+            title: "God Remembers",
+            desc: "Une plateforme culinaire et gastronomique.",
+            url: "https://godremembers.netlify.app/",
+            tag: "En cours",
+            screenshot: "/Image/restauto (1).webp",
+          },
+        ],
+        en: [
+          {
+            title: "Flighthotelcargo",
+            desc: "A human, responsive travel and international logistics agency, available 6 days a week to support you at every step.",
+            url: "https://flighthotelcargo.com/",
+            tag: "Web agency",
+            screenshot: "/Image/projet1.webp",
+          },
+          {
+            title: "RemDigit",
+            desc: "A showcase website for a digital communication agency.",
+            url: "https://remdigit.netlify.app/",
+            tag: "Showcase",
+            screenshot: "/Image/projet3.webp",
+          },
+          {
+            title: "EduConect",
+            desc: "An online training and coaching platform.",
+            url: "https://educonect.netlify.app/",
+            tag: "In progress",
+            screenshot: "/Image/càaching00.06.01.webp",
+          },
+          {
+            title: "God Remembers",
+            desc: "A culinary and gastronomic platform.",
+            url: "https://godremembers.netlify.app/",
+            tag: "In progress",
+            screenshot: "/Image/restauto (1).webp",
+          },
+        ],
+        es: [
+          {
+            title: "Flighthotelcargo",
+            desc: "Una agencia de viajes y logística internacional humana, reactiva y disponible 6 días a la semana para acompañarte en cada etapa.",
+            url: "https://flighthotelcargo.com/",
+            tag: "Web agency",
+            screenshot: "/Image/projet1.webp",
+          },
+          {
+            title: "RemDigit",
+            desc: "Un sitio escaparate para una agencia de comunicación digital.",
+            url: "https://remdigit.netlify.app/",
+            tag: "Escaparate",
+            screenshot: "/Image/projet3.webp",
+          },
+          {
+            title: "EduConect",
+            desc: "Una plataforma de formación y coaching en línea.",
+            url: "https://educonect.netlify.app/",
+            tag: "En curso",
+            screenshot: "/Image/càaching00.06.01.webp",
+          },
+          {
+            title: "God Remembers",
+            desc: "Una plataforma culinaria y gastronómica.",
+            url: "https://godremembers.netlify.app/",
+            tag: "En curso",
+            screenshot: "/Image/restauto (1).webp",
+          },
+        ],
+      };
 
-        const arrowSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+      const arrowSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
 
-        const visitLabel = { fr: "Visiter", en: "Visit", es: "Visitar" };
-        const viewLabel  = { fr: "Voir le projet", en: "View project", es: "Ver proyecto" };
+      const visitLabel = { fr: "Visiter", en: "Visit", es: "Visitar" };
+      const viewLabel = {
+        fr: "Voir le projet",
+        en: "View project",
+        es: "Ver proyecto",
+      };
 
-        function buildGrid(lang) {
-            const grid = document.getElementById('grid');
-            if (!grid) return;
-            const projects = projectsData[lang] || projectsData['fr'];
-            const vLabel = visitLabel[lang] || visitLabel['fr'];
-            const pLabel = viewLabel[lang]  || viewLabel['fr'];
+      function buildGrid(lang) {
+        const grid = document.getElementById("grid");
+        if (!grid) return;
+        const projects = projectsData[lang] || projectsData["fr"];
+        const vLabel = visitLabel[lang] || visitLabel["fr"];
+        const pLabel = viewLabel[lang] || viewLabel["fr"];
 
-            grid.innerHTML = '';
-            projects.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
+        grid.innerHTML = "";
+        projects.forEach((p) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
                     <div class="card-preview">
                         <img
                             src="${p.screenshot}"
@@ -180,26 +200,29 @@
                         </div>
                     </div>
                 `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Construction initiale
-        document.addEventListener('DOMContentLoaded', () => {
-            const lang = localStorage.getItem('lang') || 'fr';
-            buildGrid(lang);
+          grid.appendChild(card);
         });
+      }
 
-        // Reconstruction quand la langue change via le sélecteur
-        document.addEventListener('langChanged', (e) => {
-            buildGrid(e.detail.lang);
-        });
-   </script>
+      // Construction initiale
+      document.addEventListener("DOMContentLoaded", () => {
+        const lang = localStorage.getItem("lang") || "fr";
+        buildGrid(lang);
+      });
 
- <!-- Bouton WhatsApp flottant -->
-<a href="https://wa.me/2290159535545" target="_blank" class="whatsapp-float">
-  <i class="fab fa-whatsapp"></i>
-</a>
+      // Reconstruction quand la langue change via le sélecteur
+      document.addEventListener("langChanged", (e) => {
+        buildGrid(e.detail.lang);
+      });
+    </script>
 
-</body>
+    <!-- Bouton WhatsApp flottant -->
+    <a
+      href="https://wa.me/2290159535545"
+      target="_blank"
+      class="whatsapp-float"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </body>
 </html>
