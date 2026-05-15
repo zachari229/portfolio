@@ -7,6 +7,8 @@
     <meta name="description" id="meta_description"
           content="Zachari GANDEKON - Développeur Full Stack. Création d'expériences web modernes et performantes." />
 
+      <link rel="preload" as="image" href="/Image/photo.profil.webp" type="image/webp" />
+
     <!-- CSS critique en premier -->
     <link rel="stylesheet" href="style.css" />
 
@@ -20,6 +22,7 @@
     <link rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
           media="print" onload="this.media='all'" />
+      
 
     <!-- Google Tag Manager différé -->
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-HTP8TFXG6Y"></script>
@@ -78,7 +81,7 @@
 
           <div class="hero-image animate-on-scroll">
             <div class="image-wrapper">
-              <img src="/Image/photo.profil.webp" alt="Zachari GANDEKON" />
+              <img src="/Image/photo.profil.webp" alt="Zachari GANDEKON" fetchpriority="high" />
             </div>
           </div>
         </div>
