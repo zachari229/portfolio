@@ -304,6 +304,12 @@ h1, h2, h3, h4 {
     .logo {
         display: none !important;
     }
+        #mobileMenu #lang {
+            display: none !important;
+        }
+        
+
+       
 
     /* Afficher et positionner le sélecteur de langue mobile */
     .lang-switcher-mobile {
@@ -753,3 +759,34 @@ h1, h2, h3, h4 {
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
 }
+
+
+/* ==============================
+   TOGGLE THEME
+   ============================== 
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    background: var(--bg-alt);
+    transform: scale(1.1);
+}
+*/
+/* Afficher soleil en mode clair, lune en mode sombre 
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+
+[data-theme="light"] .icon-sun { display: block; }
+[data-theme="light"] .icon-moon { display: none; }
+*/

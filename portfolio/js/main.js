@@ -168,3 +168,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   initScrollAnimations();
 });
 
+// ─── Basculer le thème ───────────────────────────────────
+//function toggleTheme() {
+ // const current = document.documentElement.getAttribute("data-theme");
+ // const next = current === "light" ? "dark" : "light";
+ // document.documentElement.setAttribute("data-theme", next);
+ // localStorage.setItem("theme", next);
+//}
+
+// Appliquer le thème sauvegardé au chargement
+//(function () {
+ // const saved = localStorage.getItem("theme") || "dark";
+ // document.documentElement.setAttribute("data-theme", saved);
+//})();
+
