@@ -336,8 +336,8 @@ const translations = {
     cv_lang_en: "English",
     cv_education: "Academic Education",
     cv_edu1_date: "2023 — Ongoing",
-    cv_edu1_title: "University Institute of Technology",
-    cv_edu1_sub: "IUT Parakou · Professional Bachelor",
+    cv_edu1_title: "Professional Bachelor in Information Management",
+    cv_edu1_sub: "University Institute of Technology (IUTParakou)",
     cv_edu2_title: "Baccalaureate Series D",
     cv_extra_training: "Additional Training",
     cv_extra1_name: "International Import / Export",
@@ -439,7 +439,7 @@ const translations = {
 
     // Footer
     footer_rights: "All rights reserved.",
-    footer_made_with: "Made with ❤️ by Zachari GANDEKON",
+    footer_made_with: "Made with  by Zachari GANDEKON",
   },
 
   // ──────────────────────────────────────────────
@@ -541,15 +541,15 @@ const translations = {
     cv_tag_webwriting: "Redacción web",
     cv_tag_import: "Importación desde China",
     cv_tag_ia_design: "Diseño ultra-realista IA",
-    cv_tag_research: "Investigación en Internet",
+    cv_tag_research: "Meta Business Suite",
     cv_tag_ia_resp: "IA responsable",
     cv_languages: "Idiomas",
     cv_lang_fr: "Francés",
     cv_lang_en: "Inglés",
     cv_education: "Formación académica",
     cv_edu1_date: "2023 — En curso",
-    cv_edu1_title: "Instituto Universitario de Tecnología",
-    cv_edu1_sub: "IUT Parakou · Licenciatura profesional",
+    cv_edu1_title: "Licenciatura profesional en Gestión de la Información",
+    cv_edu1_sub: "Instituto Universitario de Tecnología (IUT Parakou)",
     cv_edu2_title: "Bachillerato Serie D",
     cv_extra_training: "Formaciones complementarias",
     cv_extra1_name: "Importación / Exportación internacional",
