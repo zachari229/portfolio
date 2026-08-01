@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pages/admin-temoignages.html
+
+Sitemap: https://https://zacharigandekon.netlify.app/sitemap.xml

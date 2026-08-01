@@ -168,6 +168,121 @@ document.addEventListener('DOMContentLoaded', async () => {
   initScrollAnimations();
 });
 
+// ============================================================
+//  PWA — Enregistrement du Service Worker
+// ============================================================
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        // Vérifie régulièrement s'il existe une nouvelle version du SW
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          if (!newWorker) return;
+
+          newWorker.addEventListener('statechange', () => {
+            if (
+              newWorker.state === 'installed' &&
+              navigator.serviceWorker.controller
+            ) {
+              // Une nouvelle version est prête : on l'active immédiatement
+              // et on recharge une seule fois pour l'appliquer.
+              newWorker.postMessage({ type: 'SKIP_WAITING' });
+            }
+          });
+        });
+      })
+      .catch((err) => console.error('[SW] Échec de l’enregistrement :', err));
+
+    // Recharge la page une seule fois quand le nouveau SW prend le contrôle
+    let refreshed = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshed) return;
+      refreshed = true;
+      window.location.reload();
+    });
+  });
+}
+
+// ============================================================
+//  PWA — Bandeau d'installation personnalisé
+// ============================================================
+let deferredInstallPrompt = null;
+
+function initInstallBanner() {
+  // Ne rien faire si déjà installé (mode standalone)
+  const isStandalone =
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true;
+  if (isStandalone) return;
+
+  // Ne pas re-proposer si l'utilisateur a déjà fermé le bandeau récemment
+  const dismissedAt = localStorage.getItem('pwaInstallDismissedAt');
+  if (dismissedAt && Date.now() - Number(dismissedAt) < 7 * 24 * 60 * 60 * 1000) {
+    return;
+  }
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    showInstallBanner();
+  });
+
+  window.addEventListener('appinstalled', () => {
+    hideInstallBanner();
+    deferredInstallPrompt = null;
+  });
+}
+
+function showInstallBanner() {
+  if (document.getElementById('pwaInstallBanner')) return;
+
+  const banner = document.createElement('div');
+  banner.id = 'pwaInstallBanner';
+  banner.className = 'pwa-install-banner';
+  banner.innerHTML = `
+    <div class="pwa-install-banner-content">
+      <i class="fa-solid fa-mobile-screen-button pwa-install-icon"></i>
+      <div class="pwa-install-text">
+        <strong>Installer le portfolio</strong>
+        <span>Accès rapide, hors ligne, comme une vraie application.</span>
+      </div>
+    </div>
+    <div class="pwa-install-actions">
+      <button class="btn btn-primary pwa-install-btn" id="pwaInstallConfirm">Installer</button>
+      <button class="pwa-install-close" id="pwaInstallDismiss" aria-label="Fermer">&times;</button>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  requestAnimationFrame(() => banner.classList.add('visible'));
+
+  document.getElementById('pwaInstallConfirm').addEventListener('click', async () => {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    hideInstallBanner();
+  });
+
+  document.getElementById('pwaInstallDismiss').addEventListener('click', () => {
+    localStorage.setItem('pwaInstallDismissedAt', String(Date.now()));
+    hideInstallBanner();
+  });
+}
+
+function hideInstallBanner() {
+  const banner = document.getElementById('pwaInstallBanner');
+  if (!banner) return;
+  banner.classList.remove('visible');
+  setTimeout(() => banner.remove(), 300);
+}
+
+registerServiceWorker();
+initInstallBanner();
+
 // ─── Basculer le thème ───────────────────────────────────
 //function toggleTheme() {
  // const current = document.documentElement.getAttribute("data-theme");

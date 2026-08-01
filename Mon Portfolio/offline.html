@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hors ligne - Zachari GANDEKON</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/icons/favicon.ico" />
+  <style>
+    .offline-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .offline-card {
+      max-width: 480px;
+    }
+    .offline-icon {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 36px;
+    }
+    .offline-card h1 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .offline-card p {
+      color: var(--text-light);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .offline-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-wrapper">
+    <div class="offline-card">
+      <div class="offline-icon">
+        <i class="fa-solid fa-wifi" style="opacity:.9"></i>
+      </div>
+      <h1>Vous êtes hors ligne</h1>
+      <p>
+        Cette page n'a pas encore été mise en cache. Vérifiez votre connexion
+        internet, ou consultez une page déjà visitée&nbsp;: l'accueil, le CV
+        ou le portfolio restent disponibles hors ligne.
+      </p>
+      <div class="offline-actions">
+        <a href="/index.html" class="btn btn-primary">Retour à l'accueil</a>
+        <button class="btn btn-outline" onclick="window.location.reload()">Réessayer</button>
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</body>
+</html>

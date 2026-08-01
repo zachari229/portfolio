@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://zacharigandekon.netlify.app/index.html</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://zacharigandekon.netlify.app/pages/about.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zacharigandekon.netlify.app/pages/cv.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zacharigandekon.netlify.app/pages/services.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zacharigandekon.netlify.app/pages/portfolio.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zacharigandekon.netlify.app/pages/boutique.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://zacharigandekon.netlify.app/pages/temoignages.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://zacharigandekon.netlify.app/pages/contact.html</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>
