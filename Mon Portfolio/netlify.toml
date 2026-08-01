@@ -1,5 +1,5 @@
 [build]
-  publish = "portfolio"
+  publish = "Mon Portfolio""
 
 # Le Service Worker ne doit jamais être mis en cache par le navigateur/CDN :
 # sinon les visiteurs resteraient bloqués sur une ancienne version indéfiniment.
