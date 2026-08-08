@@ -27,7 +27,7 @@ const translations = {
     hero_i_am: "Je suis",
     hero_name: "Zachari GANDEKON",
     hero_description:
-      "Je crée des solutions web modernes, performantes et intuitives qui résolvent de vrais problèmes. Passionné par le code propre, le design centré utilisateur et les technologies modernes.",
+      "Je crée des solutions web modernes, performantes et intuitives qui résolvent de vrais problèmes. Passionné par le code propre et le design centré utilisateur, je m'investis aussi dans le community management, la gestion des réseaux sociaux et la création de contenu pour donner une présence digitale complète à chaque projet.",
     btn_projects: "Voir mes projets",
     btn_contact: "Me contacter",
 
@@ -36,6 +36,7 @@ const translations = {
       "développeur Full Stack",
       "développeur WordPress",
       "spécialiste SEO",
+      "community manager",
       " passionné par la cybersécurité.",
     ],
 
@@ -57,7 +58,7 @@ const translations = {
     about_story_label: "Mon histoire",
     about_story_title: "Qui suis-je vraiment ?",
     about_story_p1:
-      "Tout a commencé par une curiosité simple : comment créer un site web professionnel sans se perdre dans le code ? Cette question m'a conduit à maîtriser les meilleurs outils No Code du marché : WordPress, Wix et à comprendre les rouages du référencement naturel (SEO).",
+      "Au départ, je voulais juste comprendre comment un site pro voyait le jour sans passer par des lignes de code. J'ai appris WordPress puis le SEO  parce qu'un site qu'on ne trouve pas ne sert à rien. Petit à petit, cette curiosité m'a poussé plus loin : vers le développement complet, les bases de données, les projets sur mesure. Aujourd'hui je construis des plateformes pensées pour le marché avec toujours le même objectif : livrer quelque chose qui résout un vrai problème.Pas juste qui marche.",
     about_story_p2:
       "Aujourd'hui, je travaille en freelance pour aider des entrepreneurs, PME et particuliers à avoir une présence en ligne efficace. Je conçois des sites web et boutiques e-commerce rapides, beaux et bien référencés sur Google sans que mes clients aient à s'inquiéter de la technique.",
     about_story_p3:
@@ -250,7 +251,7 @@ const translations = {
     hero_i_am: "I am",
     hero_name: "Zachari GANDEKON",
     hero_description:
-      "I build modern, performant and intuitive web solutions that solve real problems. Passionate about clean code, user-centered design and modern technologies.",
+      "I create modern, performant and intuitive web solutions that solve real problems. Passionate about clean code and user-centered design, I also invest in community management, social media management and content creation to give a complete digital presence to each project.",
     btn_projects: "View my projects",
     btn_contact: "Contact me",
 
@@ -278,7 +279,7 @@ const translations = {
     about_story_label: "My story",
     about_story_title: "Who am I really?",
     about_story_p1:
-      "It all started with a simple curiosity: how to create a professional website without getting lost in code? This question led me to master the best No Code tools on the market: WordPress, Wix, and to understand the mechanics of natural search engine optimization (SEO).",
+      "At first, I just wanted to understand how a professional website came to life without going through lines of code. I learned WordPress and then SEO because a website that cannot be found is useless. Little by little, this curiosity pushed me further: towards full development, databases, and custom projects. Today I build platforms designed for the market with the same goal: to deliver something that solves a real problem. Not just something that works.",
     about_story_p2:
       "Today, I work as a freelancer helping entrepreneurs, SMEs and individuals to have an effective online presence. I design fast, beautiful and well-ranked websites and e-commerce stores on Google without my clients having to worry about the technical side.",
     about_story_p3:
@@ -465,7 +466,7 @@ const translations = {
     hero_i_am: "Soy",
     hero_name: "Zachari GANDEKON",
     hero_description:
-      "Creo soluciones web modernas, eficientes e intuitivas que resuelven problemas reales. Apasionado por el código limpio, el diseño centrado en el usuario y las tecnologías modernas.",
+      "Creo soluciones web modernas, eficientes e intuitivas que resuelven problemas reales. Apasionado por el código limpio y el diseño centrado en el usuario, también me involucro en la gestión de comunidades, la gestión de redes sociales y la creación de contenido para brindar una presencia digital completa a cada proyecto.",
     btn_projects: "Ver mis proyectos",
     btn_contact: "Contáctame",
 
@@ -493,7 +494,7 @@ const translations = {
     about_story_label: "Mi historia",
     about_story_title: "¿Quién soy realmente?",
     about_story_p1:
-      "Todo comenzó con una curiosidad simple: ¿cómo crear un sitio web profesional sin perderse en el código? Esta pregunta me llevó a dominar las mejores herramientas No Code del mercado: WordPress, Wix, y a entender los mecanismos del posicionamiento natural (SEO).",
+      "Al principio, solo quería entender cómo surgía un sitio web profesional sin pasar por líneas de código. Aprendí WordPress y luego SEO porque un sitio web que no se puede encontrar es inútil. Poco a poco, esta curiosidad me llevó más lejos: hacia el desarrollo completo, bases de datos y proyectos personalizados. Hoy construyo plataformas pensadas para el mercado con el mismo objetivo: entregar algo que resuelva un problema real. No solo algo que funcione.",
     about_story_p2:
       "Hoy trabajo como freelance ayudando a emprendedores, pymes y particulares a tener una presencia online eficaz. Diseño sitios web y tiendas de e-commerce rápidos, atractivos y bien posicionados en Google, sin que mis clientes tengan que preocuparse por la parte técnica.",
     about_story_p3:

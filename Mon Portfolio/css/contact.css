@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
     --primary: #6366f1;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
 }
 
 * {
@@ -12,7 +14,7 @@
 
 body {
     background: #0F1415;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     color: white;
 }
 
@@ -29,15 +31,15 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(99,102,241,0.15);
-    border: 1px solid rgba(99,102,241,0.3);
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
     color: #818cf8;
     padding: 6px 18px;
     border-radius: 50px;
+    font-family: var(--font-body);
     font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     margin-bottom: 1.5rem;
 }
 
@@ -51,14 +53,24 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.5; transform: scale(1.35); }
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.35);
+    }
 }
 
 .contact-header h1 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 800;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     color: #fff;
     line-height: 1.1;
     margin-bottom: 1rem;
@@ -96,8 +108,8 @@ body {
 }
 
 /* ── TEXTE INTRO ── */
-.contact-info > p,
-.contact-form > p {
+.contact-info>p,
+.contact-form>p {
     font-size: 16px;
     line-height: 1.7;
     color: #c0cad2;
@@ -120,10 +132,11 @@ body {
 }
 
 .info-box h3 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 18px;
     margin-bottom: 6px;
     font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 .info-box p {
@@ -145,7 +158,7 @@ body {
     text-decoration: none;
     padding: 12px 24px;
     border-radius: 10px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 15px;
     font-weight: 600;
     display: inline-flex;
@@ -177,7 +190,7 @@ input {
     border: 1px solid #233847;
     border-radius: 10px;
     padding-left: 16px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 15px;
     color: white;
     outline: none;
@@ -195,7 +208,7 @@ textarea {
     border: 1px solid #233847;
     border-radius: 10px;
     padding: 16px 20px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 15px;
     color: white;
     outline: none;
@@ -219,7 +232,7 @@ textarea::placeholder {
     border: none;
     background: #5D64B3;
     color: white;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 15px;
     font-weight: 600;
     padding: 12px 32px;
@@ -228,13 +241,15 @@ textarea::placeholder {
     transition: opacity 0.2s;
 }
 
-.send:hover { opacity: 0.85; }
+.send:hover {
+    opacity: 0.85;
+}
 
 .back {
     border: none;
     background: #e8e8e8;
     color: #0666d9;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 15px;
     font-weight: 600;
     padding: 12px 32px;
@@ -243,7 +258,9 @@ textarea::placeholder {
     transition: opacity 0.2s;
 }
 
-.back:hover { opacity: 0.85; }
+.back:hover {
+    opacity: 0.85;
+}
 
 /* ==============================
    RESPONSIVE MOBILE
@@ -268,9 +285,18 @@ textarea::placeholder {
     }
 
     /* Infos */
-    .info-box h3 { font-size: 16px; }
-    .info-box p  { font-size: 14px; }
-    .info-box i  { font-size: 22px; width: 30px; }
+    .info-box h3 {
+        font-size: 16px;
+    }
+
+    .info-box p {
+        font-size: 14px;
+    }
+
+    .info-box i {
+        font-size: 22px;
+        width: 30px;
+    }
 
     /* Boutons côte à côte sur mobile */
     .buttons {
@@ -290,20 +316,29 @@ textarea::placeholder {
         gap: 12px;
     }
 
-    input  { height: 48px; font-size: 14px; }
-    textarea { height: 140px; font-size: 14px; }
+    input {
+        height: 48px;
+        font-size: 14px;
+    }
+
+    textarea {
+        height: 140px;
+        font-size: 14px;
+    }
 
     .form-buttons {
         flex-direction: row;
     }
 
-    .send, .back {
+    .send,
+    .back {
         flex: 1;
         text-align: center;
     }
 }
 
 @media (max-width: 400px) {
+
     .contact-info,
     .contact-form {
         padding: 24px 16px;

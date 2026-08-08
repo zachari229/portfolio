@@ -11,6 +11,8 @@
     --star: #f5c542;
     --ok: #2dd4ab;
     --err: #ff6584;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
 }
 
 * {
@@ -22,7 +24,7 @@
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-weight: 300;
     min-height: 100vh;
     overflow-x: hidden;
@@ -51,10 +53,10 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    font-family: var(--font-body);
     font-size: .74rem;
-    font-weight: 500;
-    letter-spacing: .12em;
-    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .02em;
     color: var(--accent);
     border: 1px solid rgba(108, 99, 255, .3);
     padding: 5px 14px;
@@ -63,11 +65,11 @@ body {
 }
 
 h1 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.15;
-    letter-spacing: -.03em;
+    letter-spacing: -.01em;
     margin-bottom: 1rem;
 }
 
@@ -91,7 +93,7 @@ h1 em {
     gap: 8px;
     background: var(--accent);
     color: #fff;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-weight: 500;
     font-size: .9rem;
     padding: .8rem 1.8rem;
@@ -131,9 +133,10 @@ h1 em {
 }
 
 .stat-n {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
+    letter-spacing: -.01em;
 }
 
 .stat-l {
@@ -150,9 +153,10 @@ h1 em {
 }
 
 .section-title {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.1rem;
     font-weight: 700;
+    letter-spacing: -.01em;
     margin-bottom: 2rem;
     color: var(--muted);
 }
@@ -207,7 +211,7 @@ h1 em {
     position: absolute;
     top: -10px;
     right: 18px;
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 6rem;
     color: rgba(108, 99, 255, .07);
     line-height: 1;
@@ -267,7 +271,7 @@ h1 em {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: .85rem;
 }
@@ -326,10 +330,10 @@ h1 em {
 }
 
 .fh h2 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(1.2rem, 4vw, 1.6rem);
     font-weight: 700;
-    letter-spacing: -.02em;
+    letter-spacing: -.01em;
 }
 
 .fh p {
@@ -358,7 +362,7 @@ select {
     border-radius: 8px;
     padding: .75rem 1rem;
     color: var(--text);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: .9rem;
     font-weight: 300;
     outline: none;

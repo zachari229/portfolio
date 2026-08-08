@@ -12,6 +12,8 @@
     --ok: #2dd4ab;
     --warn: #f5c542;
     --err: #ff6584;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
 }
 
 * {
@@ -23,7 +25,7 @@
 body {
     background: var(--bg);
     color: var(--txt);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-weight: 300;
     min-height: 100vh;
 }
@@ -47,9 +49,10 @@ body {
 }
 
 .login-box h2 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.5rem;
-    font-weight: 800;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     margin-bottom: .5rem;
 }
 
@@ -66,7 +69,7 @@ body {
     border-radius: 8px;
     padding: .75rem 1rem;
     color: var(--txt);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: .9rem;
     outline: none;
     transition: border-color .2s;
@@ -85,7 +88,7 @@ body {
     gap: 8px;
     background: var(--acc);
     color: #fff;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-weight: 500;
     font-size: .9rem;
     padding: .75rem 1.5rem;
@@ -199,9 +202,10 @@ body {
 }
 
 .scard-n {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 .scard-l {
@@ -281,10 +285,9 @@ table {
 th {
     text-align: left;
     font-size: .73rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--mu);
-    text-transform: uppercase;
-    letter-spacing: .06em;
+    letter-spacing: .01em;
     padding: .75rem 1rem;
     border-bottom: 1px solid var(--b);
     background: var(--s);
@@ -500,7 +503,7 @@ tr:hover td {
         grid-template-columns: 1fr 1fr;
         padding: 1rem;
         gap: .75rem;
-        
+
     }
 
     .scard {
