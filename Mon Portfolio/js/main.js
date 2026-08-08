@@ -56,6 +56,7 @@ function initTyped() {
       ' développeur Full Stack',
       ' développeur WordPress',
       ' spécialiste SEO',
+      ' community manager',
       ' passionné par la cybersécurité.'
     ],
     typeSpeed: 100,

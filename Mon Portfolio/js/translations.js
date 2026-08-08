@@ -260,6 +260,7 @@ const translations = {
       "Full Stack developer",
       "WordPress developer",
       "SEO specialist",
+      "Community manager",
       "Cybersecurity enthusiast.",
     ],
 
@@ -475,6 +476,7 @@ const translations = {
       "desarrollador Full Stack",
       "desarrollador WordPress",
       "especialista en SEO",
+      "community manager",
       "apasionado por la ciberseguridad.",
     ],
 
