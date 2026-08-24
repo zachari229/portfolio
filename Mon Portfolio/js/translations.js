@@ -19,7 +19,7 @@ const translations = {
     nav_about: "À propos",
     nav_cv: "CV",
     nav_services: "Services",
-    //nav_shop: "Boutique",
+    nav_shop: "Boutique",
     nav_contact: "Contact",
 
     // Hero
