@@ -85,15 +85,18 @@ const translations = {
     xp1_company: "Indépendant — Parakou, Bénin",
     xp1_desc:
       "Création de sites vitrines et boutiques e-commerce pour des clients locaux et internationaux avec WordPress et Wix. Optimisation SEO pour améliorer la visibilité sur Google. Gestion complète des projets de la conception à la mise en ligne.",
-    xp2_title: "Spécialisation No Code & SEO",
+    xp2_title: "Montée en compétences Full-Stack",
     xp2_company: "Auto-formation & projets personnels",
     xp2_desc:
       "Apprentissage approfondi de WordPress, WooCommerce, Elementor et Wix. Formation au référencement naturel (SEO on-page, mots-clés, Google Search Console). Réalisation de premiers projets pour des clients réels.",
-    xp3_title: "Découverte du web & premiers projets",
-    xp3_company: "Autodidacte",
+    xp3_title: "Élargissement de mes compétences en marketing digital",
+
+    xp3_company: "Formation en Community Management & Marketing Digital",
+
     xp3_desc:
-      "Premiers pas dans la création web. Découverte de WordPress et des bases du développement HTML/CSS. Création de sites personnels pour apprendre et expérimenter.",
-    tag_webdesign: "Design web",
+      "Développement de mes compétences en marketing digital à travers l'apprentissage de la gestion des réseaux sociaux, de la création de contenu et des stratégies de communication digitale afin d'améliorer la visibilité et la présence en ligne des entreprises.",
+
+    tag_webdesign: "Marketing digital",
 
     // À propos — CTA
     about_cta_title: "Tu as un projet en tête ?",
@@ -303,15 +306,18 @@ const translations = {
     xp1_company: "Independent — Parakou, Benin",
     xp1_desc:
       "Building showcase sites and e-commerce stores for local and international clients with WordPress and Wix. SEO optimization to improve visibility on Google. Full project management from design to launch.",
-    xp2_title: "No Code & SEO Specialization",
+    xp2_title: "Full-Stack Skills Development",
     xp2_company: "Self-training & personal projects",
     xp2_desc:
-      "In-depth learning of WordPress, WooCommerce, Elementor and Wix. Training in natural SEO (on-page, keywords, Google Search Console). Completion of first projects for real clients.",
-    xp3_title: "Web discovery & first projects",
-    xp3_company: "Self-taught",
+      "In-depth learning of WordPress, WooCommerce, Elementor and Wix. Training in search engine optimization, including on-page SEO, keyword research and Google Search Console. Completion of projects for real clients.",
+
+    xp3_title: "Expanding My Digital Marketing Skills",
+    xp3_company: "Community Management & Digital Marketing Training",
     xp3_desc:
-      "First steps in web creation. Discovery of WordPress and HTML/CSS development basics. Building personal sites to learn and experiment.",
-    tag_webdesign: "Web design",
+      "Development of my digital marketing skills through learning social media management, content creation and digital communication strategies to help businesses improve their visibility and online presence.",
+
+    tag_webdesign: "Digital Marketing",
+
     about_cta_title: "Have a project in mind?",
     about_cta_desc:
       "I am available for new collaborations — websites, e-commerce, or any other web project.",
@@ -519,15 +525,18 @@ const translations = {
     xp1_company: "Independiente — Parakou, Benín",
     xp1_desc:
       "Creación de sitios web y tiendas e-commerce para clientes locales e internacionales con WordPress y Wix. Optimización SEO para mejorar la visibilidad en Google. Gestión completa del proyecto desde el diseño hasta el lanzamiento.",
-    xp2_title: "Especialización No Code & SEO",
+    // 🇪🇸 Español
+    xp2_title: "Desarrollo de competencias Full-Stack",
     xp2_company: "Autoformación y proyectos personales",
     xp2_desc:
-      "Aprendizaje profundo de WordPress, WooCommerce, Elementor y Wix. Formación en SEO natural (on-page, palabras clave, Google Search Console). Realización de primeros proyectos para clientes reales.",
-    xp3_title: "Descubrimiento web y primeros proyectos",
-    xp3_company: "Autodidacta",
+      "Aprendizaje profundo de WordPress, WooCommerce, Elementor y Wix. Formación en posicionamiento natural (SEO on-page, palabras clave y Google Search Console). Realización de los primeros proyectos para clientes reales.",
+
+    xp3_title: "Ampliación de mis competencias en marketing digital",
+    xp3_company: "Formación en Community Management y Marketing Digital",
     xp3_desc:
-      "Primeros pasos en la creación web. Descubrimiento de WordPress y las bases de HTML/CSS. Creación de sitios personales para aprender y experimentar.",
-    tag_webdesign: "Diseño web",
+      "Desarrollo de mis competencias en marketing digital mediante el aprendizaje de la gestión de redes sociales, la creación de contenido y las estrategias de comunicación digital con el fin de mejorar la visibilidad y la presencia en línea de las empresas.",
+
+    tag_webdesign: "Marketing digital",
     about_cta_title: "¿Tienes un proyecto en mente?",
     about_cta_desc:
       "Estoy disponible para nuevas colaboraciones: sitios web, e-commerce o cualquier otro proyecto web.",
